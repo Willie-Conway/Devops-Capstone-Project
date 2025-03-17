@@ -5,7 +5,7 @@
 
 | name                | about                                                                                                                                                            | title      | labels | assignees |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|--------|-----------|
-| User Story Template | A structured template to create user stories that define feature requirements for the customer accounts microservice. The template follows the Gherkin syntax to ensure clear acceptance criteria and consistency. | "[FEATURE]" |        |           | 
+| User Story Template | Template for user stories with Gherkin syntax for the customer accounts microservice. | "[FEATURE]" |        |           | 
 
 
 
