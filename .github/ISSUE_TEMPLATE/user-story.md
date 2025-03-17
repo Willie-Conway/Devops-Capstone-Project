@@ -7,7 +7,7 @@
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|--------|-----------|
 | User Story Template | A structured template to create user stories that define feature requirements for the customer accounts microservice. The template follows the Gherkin syntax to ensure clear acceptance criteria and consistency. | "[FEATURE]" |        |           | 
 
----
+
 
 <br>
 
