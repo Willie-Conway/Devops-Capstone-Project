@@ -45,8 +45,6 @@
 Given that the microservice code is ready  
 When I build the Docker container  
 Then the container should be built successfully  
-And the
-
- microservice should run inside the container without errors
+And the microservice should run inside the container without errors
 ```
 
