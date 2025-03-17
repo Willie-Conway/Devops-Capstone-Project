@@ -1,10 +1,9 @@
 
 ---
-name: User Story
-about: Template for creating user stories with well-defined structure
-title: "[FEATURE]"
-labels: user story
-assignees: ''
+
+| **Name**     | **About**                                                                | **Title**  | **Labels**  | **Assignees** |
+|--------------|--------------------------------------------------------------------------|------------|-------------|---------------|
+| User Story   | Template for creating user stories with well-defined structure           | "[FEATURE]"| user story  | ''            |
 
 ---
 
