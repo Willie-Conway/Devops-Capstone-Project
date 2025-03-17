@@ -1,11 +1,8 @@
 
----
-
 | **Name**     | **About**                                                                | **Title**  | **Labels**  | **Assignees** |
 |--------------|--------------------------------------------------------------------------|------------|-------------|---------------|
 | User Story   | Template for creating user stories with well-defined structure           | "[FEATURE]"| user story  | ''            |
 
----
 
 **As a** [role]  
 **I need** [function]  
