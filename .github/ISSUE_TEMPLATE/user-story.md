@@ -12,11 +12,14 @@
 * [document what you know about the task]
 
 ### Acceptance Criteria
+
 #### Scenario 1: [describe scenario]
+gherkin 
 Given [some context]  
 When [certain action is taken]  
 Then [the outcome of action is observed]  
 
+gherkin 
 #### Scenario 2: [describe additional scenario if needed]
 Given [some context]  
 When [certain action is taken]  
