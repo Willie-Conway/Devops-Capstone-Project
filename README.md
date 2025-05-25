@@ -81,6 +81,7 @@ Create `.github/ISSUE_TEMPLATE/user-story.md`:
 Given [context]  
 When [action]  
 Then [outcome]
+```
 
 
 
