@@ -1624,6 +1624,124 @@ You're ready to move on to **Sprint 3** where you’ll tackle Docker, Kubernetes
 
 ---
 
+### 🚀 Sprint 3: Stories Overview & Actions
+
+Welcome to Sprint 3! In this sprint, you'll take your microservice to the next level by containerizing it, deploying it to Kubernetes, and automating the deployment with a CD pipeline using Tekton.
+
+---
+
+### 🧩 Story 1: Containerize Your Microservice Using Docker
+
+📌 **Markdown Description:**
+
+```markdown
+Title: Containerize your microservice using Docker  
+**As a** developer  
+**I need** to containerize my microservice using Docker  
+**So that** I can deploy it easily with all of its dependencies  
+
+### Assumptions  
+* Create a `Dockerfile` for repeatable builds  
+* Use a `Python:3.9-slim` image as the base  
+* It must install all of the Python requirements  
+* It should not run as `root`  
+* It should use the `gunicorn` wsgi server as an entry point  
+
+### Acceptance Criteria  
+Given the Docker image named accounts has been created  
+When I use `docker run accounts`  
+Then I should see the accounts service running in Docker  
+````
+
+🏷 **Label:** Technical Debt
+📏 **Estimate:** Small (3) or Medium (5)
+📆 **Sprint:** Assign to Sprint 3
+📦 **Rank:** Top of Sprint Backlog ✅
+
+---
+
+## ☸️ Story 2: Deploy Your Docker Image to Kubernetes
+
+📌 **Markdown Description:**
+
+```markdown
+Title: Deploy your Docker image to Kubernetes  
+**As a** service provider  
+**I need** my service to run on Kubernetes  
+**So that** I can easily scale and manage the service  
+
+### Assumptions  
+* Kubernetes manifests will be created in yaml format  
+* These manifests could be useful to create a CD pipeline  
+* The actual deployment will be to OpenShift  
+
+### Acceptance Criteria  
+Given the Kubernetes manifests have been created  
+When I use the oc command to apply the manifests  
+Then the service should be deployed and run in Kubernetes  
+```
+
+🏷 **Label:** Enhancement
+📏 **Estimate:** Medium (5) or Large (8)
+📆 **Sprint:** Assign to Sprint 3
+📦 **Rank:** 2nd in Sprint Backlog ⬇️
+
+---
+
+## 🔁 Story 3: Create a CD Pipeline to Automate Deployment to Kubernetes
+
+📌 **Markdown Description:**
+
+```markdown
+Title: Create a CD pipeline to automate deployment to Kubernetes  
+**As a** developer  
+**I need** to create a CD pipeline to automate deployment to Kubernetes  
+**So that** the developers are not wasting their time doing it manually  
+
+### Assumptions  
+* Use Tekton to define the pipeline  
+* It should clone, lint, test, build, and deploy the service  
+* Deployment should be to OpenShift  
+* It can use a manual trigger for this MVP  
+
+### Acceptance Criteria  
+Given the CD pipeline has been created  
+When I trigger the pipeline run  
+Then I should see the accounts service deployed to OpenShift  
+```
+
+🏷 **Label:** Enhancement or Technical Debt
+📏 **Estimate:** Large (8) or Extra Large (13)
+📆 **Sprint:** Assign to Sprint 3
+📦 **Rank:** 3rd in Sprint Backlog ⬇️
+
+---
+
+## 📋 Final Checklist
+
+✅ Add the 3 stories above to your **Kanban board**
+➡️ Move from **Product Backlog** → **Sprint Backlog**
+🏷 Apply correct **labels** and **estimates**
+📌 Rank them in order:
+
+1. 🐳 Containerize Microservice
+2. ☸️ Deploy to Kubernetes
+3. 🔁 Create CD Pipeline
+
+🖼 **Take a screenshot of your Kanban board** with Sprint 3 planned
+📸 Save it as: `sprint3-plan.jpg` or `sprint3-plan.png`
+
+---
+
+## 🧠 Next Steps
+
+Once Sprint 3 is planned, start the **"Containerize"** story first:
+
+* Create your `Dockerfile` 🐳
+* Build & test the image locally
+* Commit your changes and make a PR
+
+
 
 
 
