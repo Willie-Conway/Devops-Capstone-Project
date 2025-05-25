@@ -2,404 +2,249 @@
 
 ![Build Status](https://github.com/Willie-Conway/devops-capstone-project/actions/workflows/ci-build.yaml/badge.svg)
 
-# 📅 Lab 1: Agile Planning Using GitHub
 
-Welcome to the **Agile Planning** lab! In this exercise, you’ll learn how to use GitHub’s Agile tools — Issues, Labels, Milestones, and Projects — to plan and track your work effectively.
+# 🚀 Lab: Agile Planning Using GitHub
 
----
+⏳ **Estimated time needed:** 60 minutes
 
-## 🎯 Objectives
+## 🌟 Welcome
+Welcome to the hands-on **Agile Planning Using GitHub** lab! In this lab, you'll build a **Sprint Plan (Sprint 0)** for a **Customer Accounts Microservice** project.
 
-* Create GitHub Issues to track user stories and tasks
-* Use Labels to categorize and prioritize work
-* Group Issues into Milestones for release planning
-* Use GitHub Projects (Kanban boards) to manage workflow visually
-* Move stories across columns to reflect progress
+**Project Goal:** Develop an account microservice with REST APIs to:
+- ✨ Create
+- 📖 Read
+- 🔄 Update
+- 🗑️ Delete
+- 📜 List customer accounts
 
----
-
-## 🔧 Prerequisites
-
-* A GitHub account
-* Basic familiarity with GitHub repositories and issues
-
----
-
-## 📝 Step 1: Create Issues for User Stories
-
-1. Go to your GitHub repository’s **Issues** tab.
-2. Click **New issue**.
-3. Enter the title and description for a user story or task.
-4. Submit the issue.
-
-💡 *Tip:* Use clear, actionable titles and detailed descriptions for each issue.
-
----
-
-## 🏷️ Step 2: Add Labels
-
-* Create and assign labels like:
-
-  * `story` (for user stories)
-  * `bug`
-  * `enhancement`
-  * `priority: high` / `priority: low`
-
-* To add labels:
-
-  * Click on an issue
-  * Select **Labels** on the right sidebar
-  * Choose or create the appropriate label
-
----
-
-## 🎯 Step 3: Create Milestones
-
-* Navigate to the **Milestones** tab under Issues.
-* Create a milestone representing a release or sprint (e.g., `Sprint 1`, `Release 1.0`).
-* Assign issues to this milestone to track their progress towards completion.
-
----
-
-## 📊 Step 4: Create and Use a Project (Kanban Board)
-
-1. Go to the **Projects** tab.
-2. Create a new project using the **Kanban (Basic)** template.
-3. Set up columns such as:
-
-   * To Do
-   * In Progress
-   * Done
-4. Add your issues as cards to the project board.
-5. Drag and drop issues between columns as work progresses.
-
----
-
-## 🔄 Step 5: Track and Update
-
-* Regularly update issue status by moving cards across the board.
-* Close issues when done.
-* Update milestones to reflect sprint or release progress.
-
----
-
-## ✅ Evidence
-
-* Take a screenshot of your GitHub Project board showing issues in different columns.
-* Save it as `agile-planning-kanban.png`.
-
----
-
-## 💡 Tips for Effective Agile Planning
-
-* Keep issues small and manageable.
-* Prioritize stories clearly using labels and milestones.
-* Use the project board daily to reflect current progress.
-* Link pull requests to issues for traceability.
-
----
-
-## 🎉 Congratulations!
-
-You’ve successfully set up an Agile planning workflow using GitHub’s built-in tools. This will help your team stay organized and focused on delivering value incrementally.
-
----
-
-# 🛠️ Lab 2: Develop a RESTful Service Using Test-Driven Development (TDD)
-
-Welcome to the **Test-Driven Development (TDD)** lab! In this lab, you will build a RESTful API by writing tests first and then implementing code to make those tests pass. This approach ensures higher quality, better design, and fewer bugs.
-
----
+> **Note:** This lab uses **GitHub only** (no lab environment).
 
 ## 🎯 Objectives
+By the end of this lab, you will:
+- ✔️ Create a GitHub repository
+- ✔️ Set up a GitHub Kanban board
+- ✔️ Develop a user story template
+- ✔️ Add and prioritize user stories
+- ✔️ Refine a product backlog
+- ✔️ Build a sprint plan
 
-* Understand the principles of Test-Driven Development
-* Write unit tests for REST API endpoints before implementation
-* Develop a simple RESTful service to manage resources (e.g., accounts, users)
-* Run tests continuously to validate code correctness
-* Practice refactoring with confidence after tests pass
+## 📸 Screenshot Requirements
+You'll need to save these screenshots:
 
----
+| File Name                         | Description                          |
+|-----------------------------------|--------------------------------------|
+| `planning-repository-done.png`    | GitHub repo created                  |
+| `planning-storytemplate-done.png` | User story template                  |
+| `planning-userstories-done.png`   | 7 user stories added                 |
+| `planning-productbacklog-done.png`| Backlog triaged                      |
+| `planning-labels-done.png`        | Stories labeled & refined            |
+| `planning-kanban-done.png`        | Final sprint backlog                 |
 
-## 🔧 Prerequisites
+**Screenshot Shortcuts:**
+- **Mac:** `Shift + Cmd + 3` (full screen) or `Shift + Cmd + 4` (area)
+- **Windows:** `Alt + Print Screen` → Paste into image editor
 
-* Basic knowledge of RESTful APIs
-* Familiarity with Python or your chosen programming language
-* Understanding of unit testing frameworks (e.g., `unittest`, `pytest`, `nose`)
-* Development environment setup (IDE, terminal)
+## 🛠️ Exercises
 
----
-
-## 📝 Lab Overview
-
-You will follow these steps:
-
-1. **Write failing tests first** for the REST API endpoints you want to implement.
-2. **Implement the minimal code** to make the tests pass.
-3. **Refactor your code** to improve structure while ensuring tests still pass.
-4. **Repeat the cycle** for each new feature or endpoint.
-
----
-
-## 🔨 Step 1: Write Tests for API Endpoints
-
-* Define tests for common RESTful operations:
-
-  * GET (list and single resource)
-  * POST (create resource)
-  * PUT/PATCH (update resource)
-  * DELETE (remove resource)
-
-* Use your testing framework to define expected input/output and behaviors.
+### Exercise 1: Create GitHub Repository
+1. Use [this template](https://github.com/ibm-developer-skills-network/aolwx-devops-capstone-template) (click "Use this template")
+2. Name: `devops-capstone-project` (set to **Public**)
+3. **Evidence:** Save repo URL + `planning-repository-done.png`
 
 ---
 
-## 💻 Step 2: Implement API Endpoints
-
-* Build the RESTful service (e.g., Flask, Django, FastAPI).
-* Implement the endpoints gradually, running tests after each addition.
-* Ensure your endpoints return appropriate HTTP status codes and JSON responses.
-
----
-
-## ✅ Step 3: Run Tests Continuously
-
-* Use your test runner (e.g., `nose`, `pytest`) to execute tests.
-* Fix any failing tests by adjusting your implementation.
-* Confirm all tests pass before moving forward.
+### Exercise 2: Create Kanban Board
+Set up board with 7 columns:
+1. New issues
+2. Icebox ❄️
+3. Product Backlog 📋
+4. Sprint Backlog 🏃
+5. In progress 🔄
+6. Review/QA ✔️
+7. Done ✅
 
 ---
 
-## 🔄 Step 4: Refactor Your Code
+### Exercise 3: User Story Template
+Create `.github/ISSUE_TEMPLATE/user-story.md`:
 
-* Clean up your implementation for readability, performance, and maintainability.
-* Ensure tests still pass after refactoring.
+```markdown
+**As a** [role]  
+**I need** [function]  
+**So that** [benefit]  
+
+### Details and Assumptions
+* [document what you know]  
+
+### Acceptance Criteria  
+```gherkin
+Given [context]  
+When [action]  
+Then [outcome]
+
+
+
+**Evidence:** `planning-storytemplate-done.png`
 
 ---
 
-## 📚 Helpful Commands
+### Exercise 4: Product Backlog
+Create 7 user stories:
+1. Set up dev environment
+2. Read an account
+3. Update an account
+4. Delete an account
+5. List accounts
+6. Containerize with Docker 🐳
+7. Deploy to Kubernetes ☸️
 
-* Run tests:
+**Evidence:** `planning-userstories-done.png`
 
-  ```bash
-  nosetests -v --with-spec --spec-color
+---
+
+### Exercise 5: Triage Issues
+- Move 5 stories to **Product Backlog**
+- Move 2 stories (Docker/K8s) to **Icebox** ❄️
+
+**Evidence:** `planning-productbacklog-done.png`
+
+---
+
+### Exercise 6: Refine Backlog
+1. Add details/acceptance criteria
+2. Create `technical debt` label (yellow)
+3. Apply labels:
+   - `enhancement` (customer features)
+   - `technical debt` (e.g., setup)
+4. Rank by priority
+
+**Evidence:** `planning-labels-done.png`
+
+---
+
+### Exercise 7: Sprint Plan
+1. Create 3 sprints (1 week each)
+2. Assign 5 stories to **Sprint 1**
+3. Add story points (3=S, 5=M, 8=L, 13=XL)
+4. Move to Sprint Backlog
+
+**Evidence:** `planning-kanban-done.png`
+
+# 🏦 Account Microservice - RESTful API with TDD
+
+## 🔍 Lab Overview
+**Develop a RESTful Service Using Test-Driven Development**  
+*Estimated time: 90 minutes*
+
+### 🎯 Objectives
+- Follow Agile plan from Kanban board
+- Implement REST API endpoints using TDD
+- Achieve 95%+ test coverage
+- Conduct sprint review
+
+## ⚠️ Important Notes
+- **Ephemeral environment**: Cloud IDE may reset - push changes to GitHub!
+- **Security**: Never store secrets in code
+- **GitHub PAT**: Required for pushing changes (repo+write permissions)
+
+## 🛠️ Setup Instructions
+
+### 1️⃣ Initialize Environment
+```bash
+export GITHUB_ACCOUNT=your_username
+git clone https://github.com/$GITHUB_ACCOUNT/devops-capstone-project.git
+cd devops-capstone-project
+bash ./bin/setup.sh
+exit  # Must reopen terminal!
+```
+
+### 2️⃣ Validate Setup
+```bash
+which python        # Should show venv path
+python --version   # Verify Python 3.9+
+```
+
+### 3️⃣ Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+### 🧪 TDD Workflow
+#### 🔴 Write Failing Test
+```python
+# tests/test_routes.py
+def test_get_account(client):
+    response = client.get("/accounts/1")
+    assert response.status_code == 200
+```
+### 🟢 Implement Minimal Code
+```python
+# service/routes.py
+@app.route("/accounts/<int:id>", methods=["GET"])
+def get_account(id):
+    account = Account.find(id)
+    return jsonify(account.serialize()), 200
+```
+
+### 🔁 Run Tests
+```bash
+nosetests --with-coverage --cover-package=service
+```
+
+### 📊 Coverage Verification
+```bash
+coverage report -m  # CLI report
+coverage html       # HTML report
+open htmlcov/index.html
+```
+
+### 📋 Required Endpoints
+
+| Method | Endpoint         | Description        |
+|--------|------------------|--------------------|
+| GET    | /accounts/<id>   | Get single account |
+| PUT    | /accounts/<id>   | Update account     |
+| DELETE | /accounts/<id>   | Delete account     |
+| GET    | /accounts        | List all accounts  |
+
+
+### 📸 Evidence Checklist
+
+1. **`tests-passing.png`** - All tests green
+
+2. **`coverage-report.png`** - Coverage ≥95%
+
+3. **`api-working.png`** - curl/Postman demo
+
+### 📂 Project Structure
+
+```bash
+.
+├── service/
+│   ├── models.py     # DB models
+│   └── routes.py     # API endpoints
+├── tests/
+│   └── test_routes.py # Unit tests
+├── requirements.txt
+└── bin/setup.sh      # Setup script
+```
+
+### 💡 Pro Tips
+
+- Use mocks in tests:
+  ```python
+  from unittest.mock import patch
   ```
-* Run the REST API server (example for Flask):
 
-  ```bash
-  flask run
-  ```
+  - Test edge cases:
+    ```python
+    def test_get_nonexistent_account(client):
+    response = client.get("/accounts/999")
+    assert response.status_code == 404
+    ```
 
----
+    - Commit often to avoid losing work
+    
 
-## 🎉 Lab Complete!
-
-You’ve now built a RESTful service using the TDD approach — ensuring a robust, well-tested application.
-
----
-
-## 📑 Evidence
-
-* Capture the terminal output of your passing test run. Save it as `test-results.txt`.
-* Screenshot your running REST API responding to requests, if possible.
-
----
-
-## 💡 Tips for Success
-
-* Keep tests small and focused on one behavior.
-* Write clear, descriptive test names.
-* Use mocks/stubs if needed for external dependencies.
-* Run tests frequently to catch regressions early.
-
----
-
-
-# 📅 Lab 3: Sprint 2 Planning
-
-Welcome to the **Sprint 2 Planning** lab! In this lab, you'll organize, prioritize, and plan your development work for the second sprint of your project using Agile practices.
-
----
-
-## 🎯 Objectives
-
-* Review user stories and backlog items for Sprint 2
-* Prioritize work based on business value and complexity
-* Break down stories into actionable tasks
-* Assign tasks to team members (if applicable)
-* Define sprint goals and deliverables
-* Create/update your sprint backlog in your Agile tool (e.g., GitHub Projects, Jira)
-
----
-
-## 🔧 Prerequisites
-
-* Basic understanding of Agile and Scrum methodologies
-* Familiarity with your project’s user stories and backlog
-* Access to your Agile planning tool (e.g., GitHub Projects, Jira)
-
----
-
-## 📝 Lab Overview
-
-You will:
-
-1. **Review backlog items** planned for Sprint 2
-2. **Prioritize and select stories** to complete during Sprint 2
-3. **Break down stories into smaller tasks** for easier tracking and execution
-4. **Estimate effort** (story points or time) for each story or task
-5. **Assign tasks** to developers (if working in a team)
-6. **Set sprint goals** that define what the sprint will achieve
-7. **Update your sprint board or project board** to reflect your Sprint 2 plan
-
----
-
-## 🔨 Step 1: Review and Prioritize Backlog
-
-* Look at all user stories in your backlog
-* Prioritize based on business impact and dependencies
-* Remove or defer any stories that don’t fit the sprint scope
-
----
-
-## 🛠️ Step 2: Break Down Stories into Tasks
-
-* For each user story, create detailed tasks
-* Tasks should be manageable and clear
-* Example: For a "User login" story, tasks might include "Create login API," "Design login UI," "Write unit tests"
-
----
-
-## 📊 Step 3: Estimate Effort
-
-* Assign story points or time estimates to tasks or stories
-* Use planning poker, T-shirt sizing, or your preferred estimation method
-
----
-
-## 🤝 Step 4: Assign and Commit
-
-* Assign tasks to team members based on skills and availability
-* Commit to what the team can realistically complete in the sprint
-
----
-
-## 🎯 Step 5: Set Sprint Goals
-
-* Define clear goals that reflect the sprint's expected outcome
-* Example: "Implement user authentication and profile management"
-
----
-
-## 💻 Step 6: Update Agile Board
-
-* Move stories/tasks to the Sprint 2 column or equivalent in your tool
-* Ensure everyone has visibility of the sprint plan
-
----
-
-## 📑 Evidence
-
-* Take a screenshot of your updated sprint board showing Sprint 2 backlog and goals
-* Optionally, export or share your sprint backlog as a PDF or CSV
-
----
-
-## 🎉 Congratulations!
-
-You have successfully planned Sprint 2 and are ready to start focused, prioritized development work!
-
----
-
-# 🚀 Lab 4: Add Continuous Integration (CI)
-
-Welcome to the **Add Continuous Integration** lab! In this lab, you'll set up a Continuous Integration pipeline that automates building, testing, and validating your code every time you push changes.
-
----
-
-## 🎯 Objectives
-
-* Understand the importance of Continuous Integration in DevOps
-* Configure a CI pipeline to automatically run tests on your code
-* Integrate with a version control system (e.g., GitHub)
-* Verify that tests run successfully on every commit or pull request
-
----
-
-## 🔧 Prerequisites
-
-* A GitHub repository with your application source code
-* Basic familiarity with Git and GitHub
-* Access to a CI tool such as Jenkins, GitHub Actions, Travis CI, or Tekton (depending on your environment)
-
----
-
-## 📝 Lab Overview
-
-You will:
-
-1. **Configure your CI pipeline** to build and test your application automatically
-2. **Add a webhook or trigger** in your version control system to start the pipeline on code changes
-3. **Run automated tests** during the CI process
-4. **Review pipeline logs** to ensure that tests pass successfully
-5. **Fix any issues** detected by the CI pipeline
-
----
-
-## 🔨 Step 1: Configure CI Pipeline
-
-* Create a pipeline configuration file (e.g., `.github/workflows/ci.yml` for GitHub Actions, or a Jenkinsfile)
-* Define steps for:
-
-  * Checking out the code
-  * Installing dependencies
-  * Running unit tests
-  * Reporting test results
-
----
-
-## 🔧 Step 2: Connect CI to Your Repository
-
-* Set up webhook or CI triggers so the pipeline runs on pushes or pull requests
-* Verify the CI tool is correctly connected to your repository
-
----
-
-## 🧪 Step 3: Run Tests Automatically
-
-* Commit and push a code change to trigger the CI pipeline
-* Observe the pipeline as it builds and runs tests
-* Ensure the tests pass and no errors occur
-
----
-
-## 🛠️ Step 4: Troubleshoot and Fix Failures
-
-* If tests fail, examine the logs for errors
-* Fix code or configuration issues
-* Commit and push fixes to trigger the CI pipeline again
-
----
-
-## 📊 Step 5: Verify CI Success
-
-* Confirm the CI pipeline consistently passes on every push or PR
-* Celebrate the automation of your testing process! 🎉
-
----
-
-## 📑 Evidence
-
-* Capture a screenshot of your CI pipeline run showing successful builds and tests
-* Optionally, save pipeline logs as proof of a working CI pipeline
-
----
-
-## 🎉 Congratulations!
-
-You’ve successfully added Continuous Integration to your development workflow, helping ensure high-quality code through automated testing!
-
----
 
 
 
