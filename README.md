@@ -2518,6 +2518,221 @@ git push --set-upstream origin cd-pipeline
 
 You’re ready to create the **test** task to run your Python unit tests using `nosetests`.
 
+---
+
+
+# 🧪 Tekton CD Pipeline: Lint & Test Tasks
+
+Welcome to Exercises 3–5 of your Tekton pipeline! In this phase, you'll integrate code **linting** and **testing** steps into your pipeline using `flake8` and `nosetests`.
+
+---
+
+## ✅ Exercise 3: Add the Lint Task
+
+### 🧰 Step 1: Install the `flake8` Task from Tekton Hub
+
+```bash
+tkn hub install task flake8
+````
+
+---
+
+### ✏️ Step 2: Edit `tekton/pipeline.yaml`
+
+Add this `lint` task after the `clone` step:
+
+```yaml
+- name: lint
+  workspaces:
+    - name: source
+      workspace: pipeline-workspace
+  taskRef:
+    name: flake8
+  params:
+    - name: image
+      value: "python:3.9-slim"
+    - name: args
+      value: ["--count", "--max-complexity=10", "--max-line-length=127", "--statistics"]
+  runAfter:
+    - clone
+```
+
+📝 Key Points:
+
+* Use `source` as the workspace name (required by `flake8`).
+* Run after the `clone` task.
+* Pass `flake8` arguments via `args`.
+
+---
+
+### 🚀 Step 3: Apply the Updated Pipeline
+
+```bash
+oc apply -f tekton/pipeline.yaml
+```
+
+---
+
+### ▶️ Step 4: Start the Pipeline and Watch Logs
+
+```bash
+tkn pipeline start cd-pipeline \
+    -p repo-url="https://github.com/$GITHUB_ACCOUNT/devops-capstone-project.git" \
+    -p branch="main" \
+    -w name=pipeline-workspace,claimName=pipelinerun-pvc \
+    -s pipeline \
+    --showlog
+```
+
+---
+
+### 🔎 Step 5: Check Pipeline Run Status
+
+```bash
+tkn pipelinerun ls
+tkn pipelinerun logs --last
+```
+
+---
+
+### 💾 Step 6: Commit Your Work
+
+```bash
+git commit -am 'added lint task'
+git push --set-upstream origin cd-pipeline
+```
+
+---
+
+## 🧪 Exercise 4: Create the Test Task (`nose`)
+
+### ✏️ Step 1: Add a `nose` Task to `tekton/tasks.yaml`
+
+```yaml
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: nose
+spec:
+  description: This task will run nosetests on the provided input.
+  workspaces:
+    - name: source
+  params:
+    - name: args
+      description: Arguments to pass to nose
+      type: string
+      default: "-v"
+    - name: database_uri
+      description: Database connection string
+      type: string
+      default: "sqlite:///test.db"
+  steps:
+    - name: nosetests
+      image: python:3.9-slim
+      workingDir: $(workspaces.source.path)
+      env:
+        - name: DATABASE_URI
+          value: $(params.database_uri)
+      script: |
+        #!/bin/bash
+        set -e
+        echo "***** Installing dependencies *****"
+        python -m pip install --upgrade pip wheel
+        pip install -qr requirements.txt
+        echo "***** Running nosetests with: $(params.args)"
+        nosetests $(params.args)
+```
+
+---
+
+### 🚀 Step 2: Apply the Task
+
+```bash
+oc apply -f tekton/tasks.yaml
+```
+
+---
+
+### 💾 Step 3: Commit Your Changes
+
+```bash
+git commit -am 'added nose task'
+git push
+```
+
+---
+
+## 🧪 Exercise 5: Add the Test Task to the Pipeline
+
+### ✏️ Step 1: Update `tekton/pipeline.yaml`
+
+Add the `tests` task using the `nose` task:
+
+```yaml
+- name: tests
+  workspaces:
+    - name: source
+      workspace: pipeline-workspace
+  taskRef:
+    name: nose
+  params:
+    - name: database_uri
+      value: "sqlite:///test.db"
+    - name: args
+      value: "-v --with-spec --spec-color"
+  runAfter:
+    - clone
+```
+
+🧠 Note: This runs in **parallel** with `lint` since both run after `clone`.
+
+---
+
+### 🚀 Step 2: Apply the Pipeline
+
+```bash
+oc apply -f tekton/pipeline.yaml
+```
+
+---
+
+### ▶️ Step 3: Start and Watch the Pipeline
+
+```bash
+tkn pipeline start cd-pipeline \
+    -p repo-url="https://github.com/$GITHUB_ACCOUNT/devops-capstone-project.git" \
+    -p branch="main" \
+    -w name=pipeline-workspace,claimName=pipelinerun-pvc \
+    -s pipeline \
+    --showlog
+```
+
+---
+
+### ✅ Step 4: Confirm Execution
+
+```bash
+tkn pipelinerun ls
+tkn pipelinerun logs --last
+```
+
+---
+
+### 💾 Step 5: Commit the Pipeline Update
+
+```bash
+git commit -am 'added test pipeline task'
+git push
+```
+
+---
+
+## 🎯 You're All Set!
+
+You've now added both **linting** and **testing** steps to your Tekton pipeline. Next up: **build** and **deploy**. Let me know if you'd like help with that!
+
+---
 
 
 
