@@ -2,11 +2,6 @@
 
 ![Build Status](https://github.com/Willie-Conway/devops-capstone-project/actions/workflows/ci-build.yaml/badge.svg)
 
-
-Sure! Here’s a polished README for **Lab: Agile Planning Using GitHub**, complete with emojis and clear sections for easy understanding.
-
----
-
 # 📅 Lab: Agile Planning Using GitHub
 
 Welcome to the **Agile Planning** lab! In this exercise, you’ll learn how to use GitHub’s Agile tools — Issues, Labels, Milestones, and Projects — to plan and track your work effectively.
