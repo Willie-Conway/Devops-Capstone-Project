@@ -105,4 +105,114 @@ You’ve successfully set up an Agile planning workflow using GitHub’s built-i
 
 ---
 
+# 🛠️ Lab 2: Develop a RESTful Service Using Test-Driven Development (TDD)
+
+Welcome to the **Test-Driven Development (TDD)** lab! In this lab, you will build a RESTful API by writing tests first and then implementing code to make those tests pass. This approach ensures higher quality, better design, and fewer bugs.
+
+---
+
+## 🎯 Objectives
+
+* Understand the principles of Test-Driven Development
+* Write unit tests for REST API endpoints before implementation
+* Develop a simple RESTful service to manage resources (e.g., accounts, users)
+* Run tests continuously to validate code correctness
+* Practice refactoring with confidence after tests pass
+
+---
+
+## 🔧 Prerequisites
+
+* Basic knowledge of RESTful APIs
+* Familiarity with Python or your chosen programming language
+* Understanding of unit testing frameworks (e.g., `unittest`, `pytest`, `nose`)
+* Development environment setup (IDE, terminal)
+
+---
+
+## 📝 Lab Overview
+
+You will follow these steps:
+
+1. **Write failing tests first** for the REST API endpoints you want to implement.
+2. **Implement the minimal code** to make the tests pass.
+3. **Refactor your code** to improve structure while ensuring tests still pass.
+4. **Repeat the cycle** for each new feature or endpoint.
+
+---
+
+## 🔨 Step 1: Write Tests for API Endpoints
+
+* Define tests for common RESTful operations:
+
+  * GET (list and single resource)
+  * POST (create resource)
+  * PUT/PATCH (update resource)
+  * DELETE (remove resource)
+
+* Use your testing framework to define expected input/output and behaviors.
+
+---
+
+## 💻 Step 2: Implement API Endpoints
+
+* Build the RESTful service (e.g., Flask, Django, FastAPI).
+* Implement the endpoints gradually, running tests after each addition.
+* Ensure your endpoints return appropriate HTTP status codes and JSON responses.
+
+---
+
+## ✅ Step 3: Run Tests Continuously
+
+* Use your test runner (e.g., `nose`, `pytest`) to execute tests.
+* Fix any failing tests by adjusting your implementation.
+* Confirm all tests pass before moving forward.
+
+---
+
+## 🔄 Step 4: Refactor Your Code
+
+* Clean up your implementation for readability, performance, and maintainability.
+* Ensure tests still pass after refactoring.
+
+---
+
+## 📚 Helpful Commands
+
+* Run tests:
+
+  ```bash
+  nosetests -v --with-spec --spec-color
+  ```
+* Run the REST API server (example for Flask):
+
+  ```bash
+  flask run
+  ```
+
+---
+
+## 🎉 Lab Complete!
+
+You’ve now built a RESTful service using the TDD approach — ensuring a robust, well-tested application.
+
+---
+
+## 📑 Evidence
+
+* Capture the terminal output of your passing test run. Save it as `test-results.txt`.
+* Screenshot your running REST API responding to requests, if possible.
+
+---
+
+## 💡 Tips for Success
+
+* Keep tests small and focused on one behavior.
+* Write clear, descriptive test names.
+* Use mocks/stubs if needed for external dependencies.
+* Run tests frequently to catch regressions early.
+
+---
+
+
 
