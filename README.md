@@ -1225,7 +1225,83 @@ With these changes, your RESTful service is now:
 
 👏 Great job making your service more production-ready!
 
-```
+
+---
+
+### 📖 Exercise 1: Pick Up the Next Story
+
+Welcome to **Exercise 1** of your DevOps Sprint! It's time to grab the next story from your **Sprint Backlog** and begin working. This step sets the stage for improving the security of your RESTful microservice.
+
+---
+
+### ✅ Your Task
+
+Follow these steps to kick off development:
+
+1️⃣ Open your **Kanban board** (e.g., Trello, GitHub Projects, or Jira).  
+2️⃣ Find the story titled:
+
+> 📝 **"Need to add security headers and CORS policies"**
+
+3️⃣ 🛠️ Move the story to the **In Progress** column.  
+4️⃣ 🙋 Assign the story to yourself.  
+5️⃣ 📚 Open the story and **read its full contents**.
+
+---
+
+### 📌 Story Details
+
+### 🎯 Title:  
+**Need to add security headers and CORS policies**
+
+### 👤 As a:
+Service provider
+
+### 🧩 I need:
+My service to use **security headers** and **CORS policies**
+
+### 🛡️ So that:
+My website is not vulnerable to **CORS attacks**
+
+---
+
+### 💭 Assumptions
+
+- ✅ `Flask-Talisman` will be used for adding **security headers**
+- ✅ `Flask-CORS` will be used for managing **cross-origin resource sharing**
+
+---
+
+### 📋 Acceptance Criteria
+
+| #️⃣ | Given | When | Then |
+|----|-------|------|------|
+| 1️⃣ | The site is secured | A REST API request is made | Secure headers and a valid CORS policy are returned |
+
+---
+
+### 🏁 Results
+
+Once complete, your **Kanban board** should reflect:
+
+- ✅ Story in **In Progress** column  
+- ✅ Story **assigned to you**  
+- ✅ Story content **reviewed and understood**
+
+---
+
+### 🔜 Next Step
+
+You're now ready to:
+
+➡️ Proceed to **Exercise 2**: Observe the Current Behavior  
+This will help you compare the response **before and after** implementing Flask-Talisman!
+
+🧠 Pro Tip: Screenshot your Kanban board with the story in **In Progress** — you'll need it later!
+
+---
+
+💡 *"Start with clarity. Deliver with security."*
 
 
 
