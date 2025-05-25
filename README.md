@@ -2728,11 +2728,194 @@ git push
 
 ---
 
-## 🎯 You're All Set!
+### 🎯 You're All Set!
 
-You've now added both **linting** and **testing** steps to your Tekton pipeline. Next up: **build** and **deploy**. Let me know if you'd like help with that!
+You've now added both **linting** and **testing** steps to your Tekton pipeline. Next up: **build** and **deploy**. 
 
 ---
+
+
+### 🚀 DevOps Capstone CI/CD Pipeline with Tekton
+
+This guide walks you through adding essential tasks to your `pipeline.yaml` for a full CI/CD pipeline using **Tekton** on **OpenShift**.
+
+---
+
+### ✅ Task 1: Add the `tests` Task 🧪
+
+Add this block under `spec.tasks:` in your `pipeline.yaml`:
+
+```yaml
+- name: tests
+  workspaces:
+    - name: source
+      workspace: pipeline-workspace
+  taskRef:
+    name: nose
+  params:
+    - name: database_uri
+      value: "sqlite:///test.db"
+    - name: args
+      value: "-v --with-spec --spec-color"
+  runAfter:
+    - clone
+````
+
+### 💾 Apply the changes:
+
+```bash
+oc apply -f tekton/pipeline.yaml
+```
+
+### 📤 Commit and Push:
+
+```bash
+git commit -am 'added test pipeline task'
+git push
+```
+
+---
+
+## ✅ Task 2: Add the `build` Task 🏗️
+
+Update `spec.params` at the top of your pipeline:
+
+```yaml
+spec:
+  params:
+    - name: repo-url
+    - name: branch
+      default: main
+    - name: build-image
+```
+
+Add the `build` task under `spec.tasks:`:
+
+```yaml
+- name: build
+  workspaces:
+    - name: source
+      workspace: pipeline-workspace
+  taskRef:
+    name: buildah
+    kind: ClusterTask
+  params:
+    - name: IMAGE
+      value: "$(params.build-image)"
+  runAfter:
+    - tests
+    - lint
+```
+
+### 💾 Apply the changes:
+
+```bash
+oc apply -f tekton/pipeline.yaml
+```
+
+### 📤 Commit and Push:
+
+```bash
+git commit -am 'added build task'
+git push
+```
+
+---
+
+## ✅ Task 3: Add the `deploy` Task 🚢
+
+Add the following task under `spec.tasks:`:
+
+```yaml
+- name: deploy
+  workspaces:
+    - name: manifest-dir
+      workspace: pipeline-workspace
+  taskRef:
+    name: openshift-client
+    kind: ClusterTask
+  params:
+    - name: SCRIPT
+      value: |
+        echo "Updating manifest..."
+        sed -i "s|IMAGE_NAME_HERE|$(params.build-image)|g" deploy/deployment.yaml
+        cat deploy/deployment.yaml
+        echo "Deploying to OpenShift..."
+        oc apply -f deploy/
+        oc get pods -l app=accounts
+  runAfter:
+    - build
+```
+
+### 🛠️ Modify `deploy/deployment.yaml`:
+
+Make sure the `image:` tag contains this placeholder:
+
+```yaml
+image: IMAGE_NAME_HERE
+```
+
+### 💾 Apply the changes:
+
+```bash
+oc apply -f tekton/pipeline.yaml
+```
+
+### 📤 Commit and Push:
+
+```bash
+git commit -am 'added deploy task'
+git push
+```
+
+---
+
+## ▶️ Run the Pipeline 🏁
+
+Make sure required environment variables are set:
+
+```bash
+export GITHUB_ACCOUNT=your_github_username
+export SN_ICR_NAMESPACE=your_project_namespace
+```
+
+Start the pipeline:
+
+```bash
+tkn pipeline start cd-pipeline \
+  -p repo-url="https://github.com/$GITHUB_ACCOUNT/devops-capstone-project.git" \
+  -p branch=main \
+  -p build-image=image-registry.openshift-image-registry.svc:5000/$SN_ICR_NAMESPACE/accounts:1 \
+  -w name=pipeline-workspace,claimName=pipelinerun-pvc \
+  -s pipeline \
+  --showlog
+```
+
+📝 **Note**: `tests` and `lint` tasks run in parallel, so their logs may be intermixed.
+
+---
+
+## 🧠 Troubleshooting Tips
+
+* Make sure your PostgreSQL pod is running:
+
+  ```bash
+  oc get pods
+  ```
+* If `postgresql` service is missing:
+
+  ```bash
+  oc new-app postgresql-ephemeral
+  ```
+
+---
+
+## 🏁 Summary
+
+✅ Tests
+✅ Build
+✅ Deploy
+✅ All tasks added and integrated into Tekton pipeline!
 
 
 
