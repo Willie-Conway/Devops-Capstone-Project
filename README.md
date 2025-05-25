@@ -370,6 +370,401 @@ cover-package=service
 
 ---
 
+# 🚀 Lab: Develop a RESTful Service Using Test-Driven Development (TDD)
+
+Welcome to the **DevOps Capstone Lab** focused on developing a secure and test-driven RESTful service using Flask! This guide outlines everything you need, from environment setup to deployment, in a clear, emoji-enhanced format 😄.
+
+---
+
+## 🔐 Note: Important Security Information
+
+- Always handle sensitive data securely.
+- Never commit secrets or API keys into version control.
+- Ensure all APIs have proper validation and error handling.
+
+---
+
+## 🛠️ Initialize Development Environment
+
+1. Clone the repository.
+2. Set up your virtual environment:
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
+3. Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+---
+
+## 📦 Project Overview
+
+This project implements a RESTful service with full CRUD operations for managing **accounts**, built using **Flask** and tested with **nose** using TDD principles.
+
+---
+
+## 📘 REST API Guidelines Review
+
+- Use appropriate HTTP status codes.
+- Use JSON for all responses.
+- Follow RESTful conventions:
+  - `GET /accounts` → List all accounts
+  - `GET /accounts/<id>` → Read an account
+  - `POST /accounts` → Create an account
+  - `PUT /accounts/<id>` → Update an account
+  - `DELETE /accounts/<id>` → Delete an account
+
+---
+
+## 🧪 Exercise 1: Implement Your First User Story
+
+Start with the "Create an Account" story. Use TDD:
+1. Write a failing test.
+2. Implement the feature.
+3. Make it pass.
+4. Refactor.
+5. Maintain 95%+ test coverage.
+
+---
+
+## 🧭 Reference: RESTful Service
+
+Refer to `service/routes.py` and `tests/test_routes.py` for routing logic and test cases. Always write your test **before** implementing the logic!
+
+---
+
+## 🧰 Exercise 2: Create a REST API with Flask
+
+Implement the remaining user stories: **Read, List, Update, Delete**
+
+### 🧾 Read an Account
+**Test**
+```python
+def test_get_account(self):
+    """It should Read a single Account"""
+    account = self._create_accounts(1)[0]
+    resp = self.client.get(f"{BASE_URL}/{account.id}")
+    self.assertEqual(resp.status_code, status.HTTP_200_OK)
+    self.assertEqual(resp.get_json()["name"], account.name)
+````
+
+**Route**
+
+```python
+@app.route("/accounts/<int:account_id>", methods=["GET"])
+def get_accounts(account_id):
+    account = Account.find(account_id)
+    if not account:
+        abort(status.HTTP_404_NOT_FOUND)
+    return account.serialize(), status.HTTP_200_OK
+```
+
+---
+
+### 📃 List All Accounts
+
+**Test**
+
+```python
+def test_get_account_list(self):
+    """It should Get a list of Accounts"""
+    self._create_accounts(5)
+    resp = self.client.get(BASE_URL)
+    self.assertEqual(resp.status_code, status.HTTP_200_OK)
+    self.assertEqual(len(resp.get_json()), 5)
+```
+
+**Route**
+
+```python
+@app.route("/accounts", methods=["GET"])
+def list_accounts():
+    accounts = Account.all()
+    return jsonify([a.serialize() for a in accounts]), status.HTTP_200_OK
+```
+
+---
+
+### ✏️ Update an Account
+
+**Test**
+
+```python
+def test_update_account(self):
+    """It should Update an existing Account"""
+    account = AccountFactory()
+    resp = self.client.post(BASE_URL, json=account.serialize())
+    new_account = resp.get_json()
+    new_account["name"] = "Updated Name"
+    resp = self.client.put(f"{BASE_URL}/{new_account['id']}", json=new_account)
+    self.assertEqual(resp.status_code, status.HTTP_200_OK)
+    self.assertEqual(resp.get_json()["name"], "Updated Name")
+```
+
+**Route**
+
+```python
+@app.route("/accounts/<int:account_id>", methods=["PUT"])
+def update_accounts(account_id):
+    account = Account.find(account_id)
+    if not account:
+        abort(status.HTTP_404_NOT_FOUND)
+    account.deserialize(request.get_json())
+    account.update()
+    return account.serialize(), status.HTTP_200_OK
+```
+
+---
+
+### 🗑️ Delete an Account
+
+**Test**
+
+```python
+def test_delete_account(self):
+    """It should Delete an Account"""
+    account = self._create_accounts(1)[0]
+    resp = self.client.delete(f"{BASE_URL}/{account.id}")
+    self.assertEqual(resp.status_code, status.HTTP_204_NO_CONTENT)
+```
+
+**Route**
+
+```python
+@app.route("/accounts/<int:account_id>", methods=["DELETE"])
+def delete_accounts(account_id):
+    account = Account.find(account_id)
+    if account:
+        account.delete()
+    return "", status.HTTP_204_NO_CONTENT
+```
+
+---
+
+## 💡 Hints and Solutions
+
+Find detailed breakdowns, hints, and solutions for each user story in the `docs/` folder or reference materials.
+
+---
+
+## 🧪 Exercise 3: Run the REST Service
+
+Start the development server:
+
+```bash
+flask run
+```
+
+Run tests:
+
+```bash
+nosetests --with-coverage
+```
+
+---
+
+## ✅ Exercise 4: Sprint Review
+
+1. Verify acceptance criteria are met.
+2. Confirm test coverage ≥ 95%.
+3. Review your Kanban board for completeness.
+4. Capture screenshots of progress.
+
+---
+
+## 🏁 Conclusion
+
+🎉 You've now completed the full lifecycle of building and testing a RESTful service using Flask and TDD! Pat yourself on the back!
+
+> 🚧 Keep exploring by adding auth, pagination, or filtering!
+
+---
+
+## 📎 Screenshots for Evidence
+
+* `read-accounts.jpg`
+* `list-accounts.jpg`
+* `update-accounts.jpg`
+* `delete-accounts.jpg`
+
+---
+
+## 🧠 Bonus: Error Handling
+
+Test edge cases like unsupported methods or invalid routes:
+
+```python
+def test_method_not_allowed(self):
+    """It should not allow an illegal method call"""
+    resp = self.client.delete(BASE_URL)
+    self.assertEqual(resp.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
+```
+
+---
+
+# 🧾 Account REST API - Sprint 1 ✅
+
+Welcome to the **Account Microservice**! This service supports full CRUD operations for managing customer accounts. Below is a breakdown of functionality, tests, and routes implemented in Sprint 1.
+
+---
+
+## 🚀 Features Implemented
+
+### 1. ✅ Create an Account
+- **Route:** `POST /accounts`
+- **Demo Command:**
+  ```bash
+  curl -i -X POST http://127.0.0.1:5000/accounts \
+  -H "Content-Type: application/json" \
+  -d '{"name":"John Doe","email":"john@doe.com","address":"123 Main St.","phone_number":"555-1212"}'
+````
+
+* **Screenshot:** `rest-create-done.jpg`
+
+---
+
+### 2. 🔄 Update an Account
+
+* **Route:** `PUT /accounts/<id>`
+* **Functionality:** Modify an existing account by providing updated fields.
+* **Demo Command:**
+
+  ```bash
+  curl -i -X PUT http://127.0.0.1:5000/accounts/1 \
+  -H "Content-Type: application/json" \
+  -d '{"name":"John Doe","email":"john@doe.com","address":"123 Main St.","phone_number":"555-1111"}'
+  ```
+* **Screenshot:** `rest-update-done.jpg`
+
+#### 🧪 Test Case
+
+```python
+def test_update_account(self):
+    """It should Update an existing Account"""
+    test_account = AccountFactory()
+    resp = self.client.post(BASE_URL, json=test_account.serialize())
+    self.assertEqual(resp.status_code, status.HTTP_201_CREATED)
+
+    new_account = resp.get_json()
+    new_account["name"] = "Something Known"
+
+    resp = self.client.put(f"{BASE_URL}/{new_account['id']}", json=new_account)
+    self.assertEqual(resp.status_code, status.HTTP_200_OK)
+
+    updated_account = resp.get_json()
+    self.assertEqual(updated_account["name"], "Something Known")
+```
+
+#### 🛠 Flask Route
+
+```python
+@app.route("/accounts/<int:account_id>", methods=["PUT"])
+def update_accounts(account_id):
+    """Update an Account"""
+    app.logger.info(f"Request to update an Account with id: {account_id}")
+    account = Account.find(account_id)
+    if not account:
+        abort(status.HTTP_404_NOT_FOUND, f"Account with id [{account_id}] could not be found.")
+    account.deserialize(request.get_json())
+    account.update()
+    return account.serialize(), status.HTTP_200_OK
+```
+
+---
+
+### 3. 🗑️ Delete an Account
+
+* **Route:** `DELETE /accounts/<id>`
+* **Demo Command:**
+
+  ```bash
+  curl -i -X DELETE http://127.0.0.1:5000/accounts/1
+  ```
+* **Screenshot:** `rest-delete-done.jpg`
+
+#### 🧪 Test Case
+
+```python
+def test_delete_account(self):
+    """It should Delete an Account"""
+    account = self._create_accounts(1)[0]
+    resp = self.client.delete(f"{BASE_URL}/{account.id}")
+    self.assertEqual(resp.status_code, status.HTTP_204_NO_CONTENT)
+```
+
+#### 🛠 Flask Route
+
+```python
+@app.route("/accounts/<int:account_id>", methods=["DELETE"])
+def delete_accounts(account_id):
+    """Delete an Account"""
+    app.logger.info(f"Request to delete an Account with id: {account_id}")
+    account = Account.find(account_id)
+    if account:
+        account.delete()
+    return "", status.HTTP_204_NO_CONTENT
+```
+
+---
+
+### 4. ❌ Method Not Allowed
+
+* **Route:** `DELETE /accounts`
+* **Demo:** Sending an invalid method to an unsupported route.
+
+#### 🧪 Test Case
+
+```python
+def test_method_not_allowed(self):
+    """It should not allow an illegal method call"""
+    resp = self.client.delete(BASE_URL)  # DELETE not allowed on /accounts
+    self.assertEqual(resp.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
+```
+
+---
+
+## 📷 Sprint Demo Artifacts
+
+| Action | Screenshot             |
+| ------ | ---------------------- |
+| Create | `rest-create-done.jpg` |
+| List   | `rest-list-done.jpg`   |
+| Read   | `rest-read-done.jpg`   |
+| Update | `rest-update-done.jpg` |
+| Delete | `rest-delete-done.jpg` |
+
+---
+
+## 🧭 Reflections: Sprint Retrospective
+
+### ✅ What went well?
+
+* Full CRUD endpoints tested and validated.
+* REST service ran smoothly during local demo.
+
+### ❗ What could be improved?
+
+* Initial test data setup was manual — can be streamlined.
+* Better error handling could be implemented.
+
+### 🔁 What to change next sprint?
+
+* Add automated CI test runs for PRs.
+* Explore pagination or filtering on list endpoint.
+
+---
+
+## 🛠 Tech Stack
+
+* Flask 🐍
+* Pytest 🧪
+* curl 🌐
+* SQLAlchemy 🛢️
+* Docker (optional) 🐳
+
+---
 
 
 
