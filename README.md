@@ -245,6 +245,130 @@ open htmlcov/index.html
 
     - Commit often to avoid losing work
     
+# 🚀 REST API Guidelines Review
+
+This document summarizes the REST API design for your lab, including testable behaviors, HTTP status codes, and implementation hints for endpoints. Use it as a cheat sheet during development and test writing! ✅
+
+---
+
+## 📌 RESTful API Endpoints
+
+| 🛠️ Action | 🔢 Method | 🔁 URL Endpoint         | 📦 Return Code    | 🧾 Body                     |
+|----------|------------|------------------------|-------------------|----------------------------|
+| List     | `GET`      | `/accounts`            | `200 OK`          | Array of accounts `[{}]`   |
+| Create   | `POST`     | `/accounts`            | `201 CREATED`     | A new account `{}`         |
+| Read     | `GET`      | `/accounts/{id}`       | `200 OK` or `404` | Account as JSON `{}`       |
+| Update   | `PUT`      | `/accounts/{id}`       | `200 OK` or `404` | Updated account as JSON    |
+| Delete   | `DELETE`   | `/accounts/{id}`       | `204 NO CONTENT`  | Empty string `""`          |
+
+🧠 **Note:** These standard behaviors enable consistent testing and API usage. If no accounts exist, always return `[]` with `200 OK` instead of a `404`.
+
+---
+
+## 🔢 HTTP Status Codes
+
+| 📟 Code | 🧾 Status              | 📖 Description                            |
+|--------|------------------------|--------------------------------------------|
+| 200    | `HTTP_200_OK`          | ✅ Request successful                       |
+| 201    | `HTTP_201_CREATED`     | 🆕 Resource successfully created            |
+| 204    | `HTTP_204_NO_CONTENT`  | 🗑️ Resource deleted / no body in response   |
+| 404    | `HTTP_404_NOT_FOUND`   | 🚫 Resource not found                       |
+| 405    | `HTTP_405_METHOD_NOT_ALLOWED` | ❌ Method not allowed on endpoint  |
+| 409    | `HTTP_409_CONFLICT`    | ⚠️ Conflict with the current state          |
+
+These codes are available via:
+```python
+from service.common import status
+````
+
+---
+
+## 🧪 Sample Unit Tests
+
+### 🔍 Test: Read Account
+
+```python
+def test_get_account(self):
+    response = self.client.get("/accounts/1")
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
+    data = response.get_json()
+    self.assertEqual(data["id"], 1)
+```
+
+### 📝 Test: Update Account
+
+```python
+def test_update_account(self):
+    updated = {"name": "New Name", "address": "New Address"}
+    response = self.client.put("/accounts/1", json=updated)
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
+    data = response.get_json()
+    self.assertEqual(data["name"], "New Name")
+```
+
+### ❌ Test: Delete Account
+
+```python
+def test_delete_account(self):
+    response = self.client.delete("/accounts/1")
+    self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+```
+
+### 📜 Test: List All Accounts
+
+```python
+def test_list_accounts(self):
+    response = self.client.get("/accounts")
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
+    data = response.get_json()
+    self.assertIsInstance(data, list)
+```
+
+### 🆕 Test: Create Account
+
+```python
+def test_create_account(self):
+    new_account = {"name": "Jane Doe", "address": "123 Elm St"}
+    response = self.client.post("/accounts", json=new_account)
+    self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+    data = response.get_json()
+    self.assertEqual(data["name"], "Jane Doe")
+```
+
+---
+
+## 💡 TDD Workflow Tips
+
+* ✅ **Write the test first** (Red)
+* 🧑‍💻 **Write the code to pass the test** (Green)
+* ♻️ **Refactor if needed**
+* 💥 Use the constants like `status.HTTP_200_OK`
+* 🔄 Use `.get()`, `.post()`, `.put()`, `.delete()` on `self.client` for endpoint tests
+
+---
+
+## ⚙️ `setup.cfg` Configuration for `nosetests`
+
+```ini
+[nosetests]
+verbosity=2
+with-spec=1
+spec-color=1
+with-coverage=1
+cover-erase=1
+cover-package=service
+```
+
+🎉 Now, running `nosetests` will include color, spec-style output, and coverage!
+
+---
+
+## 📸 Submission Checklist
+
+* ✅ Screenshot of `setup.cfg`: `rest-setupcfg-done.jpg` / `.png`
+* ✅ Screenshot of Kanban board (Story in Done): `rest-techdebt-done.jpg` / `.png`
+
+---
 
 
 
