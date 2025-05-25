@@ -1983,7 +1983,7 @@ Let’s build and run your containerized microservice! 🏗️🔧
 
 ---
 
-# 🔀 Exercise 4: Make a Pull Request
+### 🔀 Exercise 4: Make a Pull Request
 
 You're almost done containerizing your microservice! 🚀  
 Now let's integrate your work into the main branch by creating a pull request (PR) on GitHub.
@@ -2078,6 +2078,135 @@ Head to your Kanban board and take the next story from the Sprint Backlog:
 You’ll create Kubernetes manifests, deploy to OpenShift, and expose your microservice! 🚀
 
 ---
+
+# ✅ Final Evidence Collection 📸
+
+Before wrapping up the lab, you’ll need to collect and submit the following proof of your work.
+
+---
+
+## 🔗 1. Save the Dockerfile URL
+
+📁 Navigate to your Dockerfile on GitHub.  
+🌐 Open the file in your browser.  
+🔗 Copy the full URL from the address bar.
+
+📝 Example:
+```
+
+[https://github.com/](https://github.com/)<your-username>/devops-capstone-project/blob/main/Dockerfile
+
+````
+
+💡 You’ll submit this link as part of your final deliverables.
+
+---
+
+## 🐳 2. Capture Docker Image List
+
+📦 Run the following command in your terminal:
+```bash
+docker image ls
+````
+
+📸 Take a screenshot of the output. Make sure your image (e.g., `accounts:1`) is clearly visible.
+
+💾 Save the screenshot as:
+
+```
+kube-images.jpg
+```
+
+or
+
+```
+kube-images.png
+```
+
+---
+
+## ☸️ 3. Capture Kubernetes Deployment
+
+📊 Check that your `accounts` app is deployed and running:
+
+```bash
+oc get all -l app=accounts
+```
+
+📸 Take a screenshot of the full output.
+Make sure it shows:
+
+* 🧱 Deployment
+* 🔁 ReplicaSet
+* 🐳 Pod
+* 🌐 Service
+* 🛣️ Route (if applicable)
+
+💾 Save the screenshot as:
+
+```
+kube-deploy-accounts.jpg
+```
+
+or
+
+```
+kube-deploy-accounts.png
+```
+
+---
+
+## 🎓 Conclusion
+
+🎉 **Congratulations!** You’ve completed a major step in your DevOps journey.
+
+🚀 What you accomplished:
+
+* ✅ Built a Docker image from a secure, reusable Dockerfile.
+* ✅ Deployed your microservice to an OpenShift Kubernetes cluster.
+* ✅ Authored Kubernetes manifests for repeatable deployments.
+* ✅ Practiced modern CI/CD workflows using GitHub and pull requests.
+* ✅ Prepared for automation via Tekton pipelines and CD tooling.
+
+---
+
+## 🛡️ Security Reminder
+
+> ⚠️ Your cloud environment is **ephemeral** and **shared**:
+
+* Always push your work to GitHub so you can restore it later.
+* **Never** store sensitive data like tokens or passwords in this environment.
+* Use a **GitHub Personal Access Token (PAT)** when prompted for a password in Git.
+
+---
+
+## 📝 Screenshot Tips
+
+📷 You’ll need screenshots for quizzes or peer review:
+
+### Mac
+
+* Capture full screen: `Shift + Command + 3`
+* Capture selection: `Shift + Command + 4`
+
+### Windows
+
+* Active window: `Alt + Print Screen`
+* Paste into an image editor and save as `.jpg` or `.png`
+
+🧾 Ensure your screenshots are clear, relevant, and saved with correct filenames.
+
+---
+
+Let me know if you need help with:
+
+* ✅ Tekton CD pipeline setup
+* ✅ YAML templates
+* ✅ Submitting your final lab work
+* ✅ Peer review tips
+
+🎯 You're on track to mastering modern DevOps workflows!
+
 
 
 
