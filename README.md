@@ -976,9 +976,111 @@ And the badge should show that the build is passing
 sprint2-story-inprogress.jpg
 ```
 
+
+Here's a well-structured `README.md` with appropriate sections, helpful emojis, and your GitHub Actions build badge included.
+
 ---
 
-👍 You're now ready to move on to the next exercise and start building your CI workflow!
+
+
+## 📦 Workflow Overview
+
+This project uses GitHub Actions to automate the following CI pipeline:
+
+1. ✅ **Checkout the code**
+2. 📥 **Install Python dependencies**
+3. 🧼 **Lint the code with Flake8**
+4. 🧪 **Run unit tests with Nose**
+5. 📊 **Display build status with a badge**
+
+---
+
+## ⚙️ GitHub Actions Workflow Configuration
+
+The workflow file is located at:  
+`.github/workflows/ci-build.yaml`
+
+### 🐳 Build Job Configuration
+
+```yaml
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: python:3.9-slim
+    services:
+      postgres:
+        image: postgres:alpine
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: pgs3cr3t
+          POSTGRES_DB: testdb
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+````
+
+### 📥 Steps to Run
+
+```yaml
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip wheel
+          pip install -r requirements.txt
+
+      - name: Lint with flake8
+        run: |
+          flake8 service --count --select=E9,F63,F7,F82 --show-source --statistics
+          flake8 service --count --max-complexity=10 --max-line-length=127 --statistics
+
+      - name: Run unit tests with nose
+        run: nosetests
+        env:
+          DATABASE_URI: "postgresql://postgres:pgs3cr3t@postgres:5432/testdb"
+```
+
+---
+
+## 🧪 Testing & Coverage
+
+* **Testing Tool:** `nose`
+* **Linter:** `flake8`
+* **Coverage:** Automatically integrated via `nose` configuration in `setup.cfg`
+
+---
+
+## 🏷️ Badge
+
+The badge above 👆 automatically updates with the latest build status of your default branch (`main`).
+It’s a great way to communicate your project’s CI health! ✅
+
+---
+
+## 📸 Evidence (Screenshots to Submit)
+
+* `ci-workflow-done.jpg` – Workflow run from GitHub Actions
+* `ci-badge-done.jpg` – README showing the CI badge
+* `ci-kanban-done.jpg` – Kanban board showing story in "Done" column
+
+---
+
+## ✅ Final Steps
+
+✔️ Create a Pull Request
+✔️ Merge once the checks pass
+✔️ Celebrate! 🎉
+
+---
+
+> Replace `<OWNER>` in the badge URL with your actual GitHub username to activate the badge!
+
+
 
 
 
