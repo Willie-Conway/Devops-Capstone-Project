@@ -1983,6 +1983,102 @@ Let’s build and run your containerized microservice! 🏗️🔧
 
 ---
 
+# 🔀 Exercise 4: Make a Pull Request
+
+You're almost done containerizing your microservice! 🚀  
+Now let's integrate your work into the main branch by creating a pull request (PR) on GitHub.
+
+---
+
+## 📝 Step-by-Step Instructions
+
+### 🧩 1. Check Your Git Status
+```bash
+git status
+````
+
+Make sure your changes are committed. If not, continue below. ✅
+
+---
+
+### ➕ 2. Add the `Dockerfile` to Staging
+
+```bash
+git add Dockerfile
+```
+
+---
+
+### 💬 3. Commit Your Changes
+
+```bash
+git commit -m "Added docker support"
+```
+
+---
+
+### ☁️ 4. Push Your Branch to GitHub
+
+First-time Git setup (if needed):
+
+```bash
+git config --local user.email "you@example.com"
+git config --local user.name "Your Name"
+```
+
+Then push:
+
+```bash
+git push --set-upstream origin add-docker
+```
+
+> 🛡️ Use your GitHub Personal Access Token when prompted for a password.
+
+---
+
+### 🔃 5. Create a Pull Request (PR)
+
+1. Go to your repository on GitHub.
+2. You should see a banner prompting you to **Compare & Pull Request**.
+3. Review the changes and submit the PR.
+4. GitHub Actions 🤖 will automatically run your tests.
+5. ✅ Once the tests pass, **Merge** the pull request into the main branch.
+
+---
+
+### 🗃️ 6. Update Your Kanban Board
+
+Move the story “Add Docker Support” to the ✅ **Done** column on your Kanban board.
+
+📸 **Evidence**: Take a screenshot of the Done column.
+💾 Save as: `kube-docker-done.jpg` or `kube-docker-done.png`
+
+---
+
+### 🧹 7. Clean Up Your Local Branch
+
+```bash
+git checkout main
+git pull
+git branch -d add-docker
+```
+
+🧼 This deletes the old working branch after merging.
+
+---
+
+## ⏭️ What's Next?
+
+🎯 **Exercise 5: Pick Up the Next Story**
+Head to your Kanban board and take the next story from the Sprint Backlog:
+
+### ✨ "Deploy your Docker image to Kubernetes"
+
+📦 Move the story to **In Progress**, assign it to yourself, and read through it carefully.
+You’ll create Kubernetes manifests, deploy to OpenShift, and expose your microservice! 🚀
+
+---
+
 
 
 
