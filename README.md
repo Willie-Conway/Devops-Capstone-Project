@@ -131,7 +131,7 @@ Create 7 user stories:
 
 **Evidence:** `planning-kanban-done.png`
 
-# 🏦 Account Microservice - RESTful API with TDD
+# Lab: 🏦 Account Microservice - RESTful API with TDD
 
 ## 🔍 Lab Overview
 **Develop a RESTful Service Using Test-Driven Development**  
