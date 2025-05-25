@@ -311,4 +311,97 @@ You have successfully planned Sprint 2 and are ready to start focused, prioritiz
 
 ---
 
+# 🚀 Lab 4: Add Continuous Integration (CI)
+
+Welcome to the **Add Continuous Integration** lab! In this lab, you'll set up a Continuous Integration pipeline that automates building, testing, and validating your code every time you push changes.
+
+---
+
+## 🎯 Objectives
+
+* Understand the importance of Continuous Integration in DevOps
+* Configure a CI pipeline to automatically run tests on your code
+* Integrate with a version control system (e.g., GitHub)
+* Verify that tests run successfully on every commit or pull request
+
+---
+
+## 🔧 Prerequisites
+
+* A GitHub repository with your application source code
+* Basic familiarity with Git and GitHub
+* Access to a CI tool such as Jenkins, GitHub Actions, Travis CI, or Tekton (depending on your environment)
+
+---
+
+## 📝 Lab Overview
+
+You will:
+
+1. **Configure your CI pipeline** to build and test your application automatically
+2. **Add a webhook or trigger** in your version control system to start the pipeline on code changes
+3. **Run automated tests** during the CI process
+4. **Review pipeline logs** to ensure that tests pass successfully
+5. **Fix any issues** detected by the CI pipeline
+
+---
+
+## 🔨 Step 1: Configure CI Pipeline
+
+* Create a pipeline configuration file (e.g., `.github/workflows/ci.yml` for GitHub Actions, or a Jenkinsfile)
+* Define steps for:
+
+  * Checking out the code
+  * Installing dependencies
+  * Running unit tests
+  * Reporting test results
+
+---
+
+## 🔧 Step 2: Connect CI to Your Repository
+
+* Set up webhook or CI triggers so the pipeline runs on pushes or pull requests
+* Verify the CI tool is correctly connected to your repository
+
+---
+
+## 🧪 Step 3: Run Tests Automatically
+
+* Commit and push a code change to trigger the CI pipeline
+* Observe the pipeline as it builds and runs tests
+* Ensure the tests pass and no errors occur
+
+---
+
+## 🛠️ Step 4: Troubleshoot and Fix Failures
+
+* If tests fail, examine the logs for errors
+* Fix code or configuration issues
+* Commit and push fixes to trigger the CI pipeline again
+
+---
+
+## 📊 Step 5: Verify CI Success
+
+* Confirm the CI pipeline consistently passes on every push or PR
+* Celebrate the automation of your testing process! 🎉
+
+---
+
+## 📑 Evidence
+
+* Capture a screenshot of your CI pipeline run showing successful builds and tests
+* Optionally, save pipeline logs as proof of a working CI pipeline
+
+---
+
+## 🎉 Congratulations!
+
+You’ve successfully added Continuous Integration to your development workflow, helping ensure high-quality code through automated testing!
+
+---
+
+
+
+
 
