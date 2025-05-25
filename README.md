@@ -1875,9 +1875,113 @@ Then I should see the accounts service running in Docker
 
 ---
 
-If you need help with GitHub issues, Docker setup, or Kubernetes deployment — just reach out! 🙌
+# 🐳 Exercise 2: Create a Dockerfile
 
+Welcome to **Exercise 2** of the DevOps Capstone Project! In this step, you’ll create a `Dockerfile` to containerize your microservice. Let's make sure your app runs in any environment — consistently and securely. 💪
 
+---
+
+## 🧠 Story Context
+
+**Story:** `Containerize your microservice using Docker`
+
+🎯 **Goal:**  
+> As a developer, I need to containerize my microservice using Docker so that I can deploy it easily with all its dependencies.
+
+---
+
+## ✅ Your Tasks
+
+### 🗂️ 1. Change into your project directory
+```bash
+cd devops-capstone-project
+````
+
+---
+
+### 🌱 2. Create a new branch for Docker work
+
+```bash
+git checkout -b add-docker
+```
+
+---
+
+### 🧪 3. Run tests to verify current functionality
+
+```bash
+nosetests
+```
+
+> ✅ All tests should pass before continuing. Fix any issues if needed.
+
+---
+
+### 📝 4. Create your Dockerfile
+
+In the **root** of your project, create a new file named `Dockerfile` with the following contents:
+
+```Dockerfile
+# 🔹 Use a minimal Python 3.9 image
+FROM python:3.9-slim
+
+# 📂 Set the working directory and install dependencies
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 📁 Copy the application code
+COPY service/ ./service/
+
+# 👤 Switch to a non-root user for better security
+RUN useradd --uid 1000 theia && chown -R theia /app
+USER theia
+
+# 🚀 Run the app using Gunicorn on port 8080
+EXPOSE 8080
+CMD ["gunicorn", "--bind=0.0.0.0:8080", "--log-level=info", "service:app"]
+```
+
+> 💡 This setup ensures repeatable builds, installs Python requirements, avoids root user risks, and runs via `gunicorn`.
+
+---
+
+## 🎉 Result
+
+If you've followed the steps above, your `Dockerfile` should look like this:
+
+```Dockerfile
+FROM python:3.9-slim
+
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY service/ ./service/
+
+RUN useradd --uid 1000 theia && chown -R theia /app
+USER theia
+
+EXPOSE 8080
+CMD ["gunicorn", "--bind=0.0.0.0:8080", "--log-level=info", "service:app"]
+```
+
+---
+
+## 📸 Evidence
+
+Take a screenshot of your completed `Dockerfile` and the passing test output.
+
+✅ Save it as: `dockerfile-setup.jpg` or `dockerfile-setup.png`
+
+---
+
+## 🚀 Next Up
+
+Ready for **Exercise 3: Create a Docker Image**?
+Let’s build and run your containerized microservice! 🏗️🔧
+
+---
 
 
 
