@@ -1118,16 +1118,16 @@ By the end of this lab, you will:
 
 1. 🔃 Pull the latest story from your Sprint Backlog  
 2. 🏗️ Create a new branch:  
-   ```bash
+```bash
    git checkout -b add-security-headers
-````
+```
 
 3. ➕ Add packages to your `requirements.txt`:
 
-   ```txt
+```txt
    Flask-Talisman
    Flask-Cors
-   ```
+```
 
 4. 📦 Install the new dependencies:
 
