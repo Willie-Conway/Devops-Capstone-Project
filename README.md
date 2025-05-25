@@ -2918,6 +2918,146 @@ tkn pipeline start cd-pipeline \
 ✅ All tasks added and integrated into Tekton pipeline!
 
 
+---
+# 🔐 Lab: Add Security to Your RESTful Service
+
+Welcome to the **Security Lab** for your RESTful API! In this lab, you’ll learn how to **protect your application** by adding **authentication** and **authorization** to secure your endpoints and control access.
+
+---
+
+## 🎯 Objectives
+
+✅ Understand common REST API security patterns  
+✅ Add authentication (e.g., API Key, JWT, or Basic Auth)  
+✅ Restrict access using role-based authorization  
+✅ Test the API to ensure it's secure  
+
+---
+
+## 🔧 Prerequisites
+
+Before starting, make sure you have:
+
+- A working RESTful API (e.g., Flask, FastAPI, Express.js)
+- Experience from the TDD and API development labs
+- A tool to test your API (like `curl`, `Postman`, or Swagger UI)
+
+---
+
+## 🛠️ Step-by-Step Instructions
+
+### 1️⃣ Choose an Authentication Strategy
+
+Pick the security method that best fits your app:
+
+🔐 **Basic Authentication** – Quick for local testing  
+🔐 **API Keys** – Simple but less secure  
+🔐 **JWT (JSON Web Token)** – Recommended for stateless APIs  
+🔐 **OAuth 2.0** – For more advanced use cases with external identity providers  
+
+---
+
+### 2️⃣ Implement Authentication
+
+Here’s an example using **JWT in Flask**:
+
+```python
+from flask import request, jsonify
+import jwt
+
+SECRET = "supersecretkey"
+
+def token_required(f):
+    def wrapper(*args, **kwargs):
+        token = request.headers.get("Authorization", None)
+        if not token:
+            return jsonify({"message": "Missing token"}), 401
+        try:
+            jwt.decode(token, SECRET, algorithms=["HS256"])
+        except jwt.ExpiredSignatureError:
+            return jsonify({"message": "Token expired"}), 401
+        except jwt.InvalidTokenError:
+            return jsonify({"message": "Invalid token"}), 401
+        return f(*args, **kwargs)
+    return wrapper
+````
+
+Apply it to your endpoints:
+
+```python
+@app.route("/secure-data")
+@token_required
+def secure_data():
+    return jsonify({"message": "You are authorized!"})
+```
+
+---
+
+### 3️⃣ Add Authorization (Role-Based Access Control)
+
+If your API has multiple user roles (e.g., admin, user), check the user's role inside the JWT payload:
+
+```python
+data = jwt.decode(token, SECRET, algorithms=["HS256"])
+if data.get("role") != "admin":
+    return jsonify({"message": "Access denied"}), 403
+```
+
+---
+
+### 4️⃣ Test Your Secured API
+
+Use Postman or `curl` to try different requests:
+
+❌ Without Token:
+
+```bash
+curl http://localhost:5000/secure-data
+```
+
+✅ With Valid Token:
+
+```bash
+curl -H "Authorization: your_jwt_token_here" http://localhost:5000/secure-data
+```
+
+🧪 Also test:
+
+* Expired or malformed tokens
+* Valid tokens with insufficient privileges
+
+---
+
+## 🧼 Step 5: Secure Your Secrets
+
+🔒 Use `.env` or environment variables to store secrets
+🚫 **Never** hardcode tokens or passwords in your source code
+✅ Use HTTPS for all production traffic
+
+---
+
+## 📑 Evidence to Submit
+
+* ✅ Screenshot of your API rejecting unauthorized requests
+* ✅ Screenshot of successful authorized requests
+* ✅ (Optional) Your API security code (e.g., `auth.py`)
+* ✅ `curl` or Postman output showing denied vs. allowed access
+
+---
+
+## 💡 Tips
+
+* Use `pyjwt`, `fastapi-jwt-auth`, or `flask-jwt-extended` for easier JWT handling
+* Regularly rotate your secrets or API keys
+* Always validate and sanitize user input — even authenticated ones!
+
+---
+
+## 🎉 Congratulations!
+
+You've now secured your RESTful service with proper **authentication** and **authorization**! This is a huge step in building **safe**, **production-grade** APIs.
+
+Feel free to ask if you need help with JWT setup, token generation, or securing secrets! 🔐💬
 
 
 
