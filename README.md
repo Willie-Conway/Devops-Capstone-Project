@@ -2331,6 +2331,194 @@ You're now fully set up to continue!
 ---
 
 
+# 🛠️ Tekton CD Pipeline Lab: What's Next?
+
+Welcome back! You're continuing your DevOps journey by automating your deployment using Tekton and OpenShift. This section focuses on setting up your pipeline and adding your first functional task: **Linting** with `flake8`.
+
+---
+
+## 📁 Create the CD Pipeline Directory Structure
+
+Run the following to organize your Tekton files:
+
+```bash
+mkdir -p tekton/cd-pipeline
+cd tekton/cd-pipeline
+````
+
+All your Tasks, Pipeline, PipelineRun, and Secrets will live here.
+
+---
+
+## 🧪 Exercise 2: Overview & Setup
+
+You're creating a CD pipeline that will:
+
+* ✅ Clone your repo
+* ✅ Lint your code
+* ✅ Run unit tests
+* ✅ Build a Docker image
+* ✅ Deploy to OpenShift
+
+---
+
+### 🔀 Step 1: Switch to a New Git Branch
+
+```bash
+cd devops-capstone-project
+git checkout -b cd-pipeline
+```
+
+---
+
+### 🧪 Step 2: Run Unit Tests
+
+```bash
+nosetests
+```
+
+Fix any failing tests before proceeding.
+
+---
+
+### 📦 Step 3: Apply Existing Pipeline Files
+
+```bash
+oc create -f tekton/pvc.yaml          # Create workspace PVC
+oc apply -f tekton/tasks.yaml         # Apply starter tasks
+oc apply -f tekton/pipeline.yaml      # Apply initial pipeline
+```
+
+---
+
+### ⬇️ Step 4: Install Required Tekton Tasks
+
+```bash
+tkn hub install task git-clone
+```
+
+📌 If that fails due to a version mismatch:
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/tektoncd/catalog/main/task/git-clone/0.9/git-clone.yaml
+```
+
+---
+
+### ▶️ Step 5: Run the Initial Pipeline
+
+```bash
+tkn pipeline start cd-pipeline \
+  -p repo-url="https://github.com/$GITHUB_ACCOUNT/devops-capstone-project.git" \
+  -p branch="main" \
+  -w name=pipeline-workspace,claimName=pipelinerun-pvc \
+  -s pipeline \
+  --showlog
+```
+
+---
+
+### ✅ Step 6: Verify Pipeline Run
+
+```bash
+tkn pipelinerun ls                # Check STATUS column
+tkn pipelinerun logs --last       # View logs of the latest run
+```
+
+---
+
+## 🧹 Exercise 3: Create the Lint Task with flake8
+
+You're going to use `flake8` to lint your code using an official task from Tekton Hub.
+
+---
+
+### 🧰 Step 1: Install the flake8 Task
+
+```bash
+tkn hub install task flake8
+```
+
+---
+
+### 🛠️ Step 2: Add Lint Task to Your Pipeline
+
+Edit your `tekton/pipeline.yaml` file and add the following **lint task** definition after the `clone` task:
+
+```yaml
+- name: lint
+  workspaces:
+    - name: source
+      workspace: pipeline-workspace
+  taskRef:
+    name: flake8
+  params:
+    - name: image
+      value: "python:3.9-slim"
+    - name: args
+      value: ["--count","--max-complexity=10","--max-line-length=127","--statistics"]
+  runAfter:
+    - clone
+```
+
+---
+
+### 🚀 Step 3: Apply the Updated Pipeline
+
+```bash
+oc apply -f tekton/pipeline.yaml
+```
+
+---
+
+### ▶️ Step 4: Re-run the Pipeline with Lint Task
+
+```bash
+tkn pipeline start cd-pipeline \
+  -p repo-url="https://github.com/$GITHUB_ACCOUNT/devops-capstone-project.git" \
+  -p branch="main" \
+  -w name=pipeline-workspace,claimName=pipelinerun-pvc \
+  -s pipeline \
+  --showlog
+```
+
+---
+
+### ✅ Step 5: Confirm It Worked
+
+Use:
+
+```bash
+tkn pipelinerun ls
+```
+
+Check `STATUS` is `Succeeded`.
+
+To see logs:
+
+```bash
+tkn pipelinerun logs --last
+```
+
+---
+
+## 💾 Step 6: Commit & Push Your Work
+
+Because the Cloud IDE is **ephemeral**, **always** commit and push after any milestone:
+
+```bash
+git add tekton/pipeline.yaml
+git commit -m "Added lint task to Tekton pipeline"
+git push --set-upstream origin cd-pipeline
+```
+
+---
+
+## 📌 Up Next
+
+You’re ready to create the **test** task to run your Python unit tests using `nosetests`.
+
+
 
 
 
