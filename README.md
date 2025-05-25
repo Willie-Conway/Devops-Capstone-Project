@@ -602,9 +602,9 @@ def test_method_not_allowed(self):
     self.assertEqual(resp.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
 ```
 
----
 
-# 🧾 Account REST API - Sprint 1 ✅
+
+# Lab: 🧾 Account REST API - Sprint 1 ✅
 
 Welcome to the **Account Microservice**! This service supports full CRUD operations for managing customer accounts. Below is a breakdown of functionality, tests, and routes implemented in Sprint 1.
 
@@ -615,7 +615,7 @@ Welcome to the **Account Microservice**! This service supports full CRUD operati
 ### 1. ✅ Create an Account
 - **Route:** `POST /accounts`
 - **Demo Command:**
-  ```bash
+```bash
   curl -i -X POST http://127.0.0.1:5000/accounts \
   -H "Content-Type: application/json" \
   -d '{"name":"John Doe","email":"john@doe.com","address":"123 Main St.","phone_number":"555-1212"}'
@@ -629,6 +629,7 @@ Welcome to the **Account Microservice**! This service supports full CRUD operati
 
 * **Route:** `PUT /accounts/<id>`
 * **Functionality:** Modify an existing account by providing updated fields.
+  
 * **Demo Command:**
 
   ```bash
@@ -764,7 +765,7 @@ def test_method_not_allowed(self):
 * SQLAlchemy 🛢️
 * Docker (optional) 🐳
 
----
+
 
 
 
