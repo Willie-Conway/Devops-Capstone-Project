@@ -1081,6 +1081,153 @@ It’s a great way to communicate your project’s CI health! ✅
 > Replace `<OWNER>` in the badge URL with your actual GitHub username to activate the badge!
 
 
+# 🛡️ Add Security to Your RESTful Service
+
+Welcome to the **"Add Security to Your RESTful Service"** hands-on lab! In this lab, you'll enhance your Flask microservice to improve its security posture using HTTP security headers and CORS policies.
+
+---
+
+## ⏱️ Estimated Time
+
+**60 minutes**
+
+---
+
+## 🎯 Objectives
+
+By the end of this lab, you will:
+
+✅ Take the next story from the Sprint Backlog  
+🔐 Add `Flask-Talisman` for security headers  
+🌐 Add `Flask-CORS` to enable cross-origin requests  
+👀 View the results of your security enhancements  
+📥 Make a pull request and merge after CI tests pass  
+🗂️ Move the story to the ✅ **Done** column on your kanban board  
+
+---
+
+## 🧰 Tools & Libraries
+
+- 🐍 Flask  
+- 🛡️ [Flask-Talisman](https://github.com/GoogleCloudPlatform/flask-talisman) – Automatically adds security headers like HSTS, CSP, and X-Frame-Options  
+- 🔄 [Flask-CORS](https://flask-cors.readthedocs.io/en/latest/) – Enables CORS in your Flask app
+
+---
+
+## 🏗️ Setup Instructions
+
+1. 🔃 Pull the latest story from your Sprint Backlog  
+2. 🏗️ Create a new branch:  
+   ```bash
+   git checkout -b add-security-headers
+````
+
+3. ➕ Add packages to your `requirements.txt`:
+
+   ```txt
+   Flask-Talisman
+   Flask-Cors
+   ```
+
+4. 📦 Install the new dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+5. 📝 Update your `service/__init__.py` or wherever your app is created:
+
+   ```python
+   from flask_talisman import Talisman
+   from flask_cors import CORS
+
+   app = Flask(__name__)
+
+   Talisman(app)
+   CORS(app)
+   ```
+
+---
+
+## 🔎 Validation Steps
+
+After making your changes:
+
+✅ Run your unit tests locally or via `make test`
+✅ Check headers via browser dev tools or `curl -I http://localhost:5000`
+✅ Confirm CORS headers like `Access-Control-Allow-Origin` are present
+✅ Commit changes:
+
+```bash
+git add .
+git commit -m "🔐 Added security headers and CORS policies"
+```
+
+---
+
+## 🚀 Push & Pull Request
+
+📤 Push your branch:
+
+```bash
+git push origin add-security-headers
+```
+
+📋 Create a pull request on GitHub
+✅ Wait for CI to pass
+🔁 Merge when ready
+
+---
+
+## 🧾 Evidence to Submit
+
+📸 Take screenshots of the following and save them as:
+
+* ✅ `security-headers-terminal.png` – terminal showing security headers present
+* ✅ `ci-pipeline-passed.png` – CI pipeline success in GitHub Actions
+* ✅ `security-readme-badge.png` – (optional) README with updated security note
+* ✅ `kanban-security-done.png` – Kanban board with story in **Done**
+
+---
+
+## ⚠️ Notes on Environment
+
+☁️ Your Cloud IDE is **ephemeral** (short-lived).
+Make sure to:
+
+* 🔄 Re-run setup after each reset:
+
+  ```bash
+  export GITHUB_ACCOUNT=your_github_account
+  git clone https://github.com/$GITHUB_ACCOUNT/devops-capstone-project.git
+  cd devops-capstone-project
+  bash ./bin/setup.sh
+  exit
+  ```
+
+* ✅ Open a new terminal and verify Python is using the virtual environment:
+
+  ```bash
+  which python
+  python --version
+  ```
+
+---
+
+## 💬 Summary
+
+With these changes, your RESTful service is now:
+
+🔒 Secured with HTTP headers
+🌐 Accessible with CORS
+🛠️ Integrated into CI/CD
+📈 Documented and validated!
+
+👏 Great job making your service more production-ready!
+
+```
+
+
 
 
 
