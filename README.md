@@ -2207,6 +2207,130 @@ Let me know if you need help with:
 
 🎯 You're on track to mastering modern DevOps workflows!
 
+---
+
+# 🚀 Tekton CD Pipeline Lab Progress Guide
+
+You're making great progress! Below is a helpful summary and checklist to ensure you stay on track as you build your **Tekton CD pipeline** using **OpenShift** and **GitHub**.
+
+---
+
+## 🔐 Security & Environment Reminders
+
+⚠️ **Ephemeral Environment**  
+Your Cloud IDE and OpenShift environment can be reset at any time. Always:
+
+- ✅ Push code to **GitHub** frequently
+- ❌ Never store **credentials**, **tokens**, or **personal info** in the lab environment
+- 🔑 Use a **GitHub Personal Access Token (PAT)** when pushing code
+
+📌 PAT requirements:
+- Must have **repo** and **write** access
+- Should **expire in 60 days or less**
+
+---
+
+## 🖼️ Screenshot Instructions & Naming Convention
+
+You'll be asked to provide screenshots as **evidence** for your work. Keep file names consistent:
+
+| Step                        | Filename Suggestion          |
+|----------------------------|------------------------------|
+| Tekton pipeline run        | `cd-pipeline-run.jpg`        |
+| OpenShift deployment view  | `tekton-deploy.jpg`          |
+| Kanban board story done    | `cd-pipeline-done.jpg`       |
+
+### 📷 Screenshot Shortcuts
+
+**Mac:**
+- 🖥️ Full screen: `Shift + Cmd + 3`
+- 🔲 Select area: `Shift + Cmd + 4`
+
+**Windows:**
+- 🪟 Active window: `Alt + Print Screen`
+- 🖌️ Paste in Paint or editor, then **save as `.jpg` or `.png`**
+
+---
+
+## 🧪 Development Environment Setup
+
+Your lab environment may be reset. Use this process every time to reinitialize:
+
+### 1. 🖥️ Open a New Terminal
+
+```bash
+export GITHUB_ACCOUNT=your_github_username
+git clone https://github.com/$GITHUB_ACCOUNT/devops-capstone-project.git
+cd devops-capstone-project
+bash ./bin/setup.sh
+````
+
+You should see:
+
+```text
+capstone_setup_complete
+```
+
+### 2. ❌ Exit the Terminal
+
+```bash
+exit
+```
+
+This step ensures your virtual environment will activate correctly.
+
+### 3. 🔄 Open a New Terminal
+
+Then validate your setup:
+
+```bash
+which python
+python --version
+```
+
+Expected Output:
+
+* `/home/theia/.venv/bin/python`
+* `Python 3.9.x`
+
+You're now fully set up to continue!
+
+---
+
+## 📌 Your Current Story: Create a CD Pipeline
+
+📝 **Title**: *Create a CD pipeline to automate deployment to Kubernetes*
+
+**As a** developer
+**I need** to create a CD pipeline
+**So that** deployments aren’t manual anymore
+
+### 🧠 Assumptions:
+
+* Use **Tekton** to define the pipeline
+* Pipeline stages: **clone → lint → test → build → deploy**
+* Deployment should be to **OpenShift**
+* Can be triggered manually
+
+### ✅ Acceptance Criteria:
+
+1. CD pipeline has been created
+2. When triggered, it runs the full pipeline
+3. It deploys the `accounts` service to OpenShift
+
+---
+
+## 🛠️ Next Steps
+
+* 🔁 Finish creating Tekton `Task` and `Pipeline` YAMLs
+* 📂 Apply them using `oc apply -f`
+* ✅ Trigger a pipeline run and observe the deployment
+* 📸 Capture the required screenshots
+* ✅ Move your Kanban story to **Done**
+
+---
+
+
 
 
 
