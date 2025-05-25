@@ -1740,6 +1740,142 @@ Once Sprint 3 is planned, start the **"Containerize"** story first:
 * Create your `Dockerfile` 🐳
 * Build & test the image locally
 * Commit your changes and make a PR
+---
+
+### 🔐 Important Security Information & Setup Guide
+
+Welcome to the **Cloud IDE with OpenShift**! This is where all your development will take place. It includes the tools you need to use Docker and deploy a PostgreSQL database.
+
+---
+
+### ⚠️ Environment Notice
+
+🧪 The **lab environment is ephemeral**, meaning it can be **deleted at any time**.  
+🔄 You must **push your work frequently** to your own GitHub repository so you can recreate it later.  
+🚫 This is a **shared environment** — **do NOT store** personal info, passwords, or tokens here.
+
+---
+
+### 👤 GitHub Personal Access Token (PAT)
+
+If you haven't generated a GitHub **Personal Access Token**, do it now.
+
+✅ It should have:
+- **repo** and **write** permissions  
+- Expiration set to **60 days**
+
+🔐 Use this token **in place of your GitHub password** when pushing code from the Cloud IDE.
+
+---
+
+### 💾 Save Your Work — Always Push to GitHub
+
+Use these Git commands to commit and push changes:
+
+```bash
+git add .
+git commit -m "Meaningful message"
+git push origin <your-branch>
+````
+
+---
+
+### 💻 Initialize Development Environment
+
+Each time the lab environment is recreated, follow these steps to initialize:
+
+### 🧰 Step-by-Step Setup
+
+```bash
+# 1. Set your GitHub username as an environment variable
+export GITHUB_ACCOUNT={your_github_account}
+
+# 2. Clone your project repository
+git clone https://github.com/$GITHUB_ACCOUNT/devops-capstone-project.git
+
+# 3. Move into the project directory
+cd devops-capstone-project
+
+# 4. Run the setup script
+bash ./bin/setup.sh
+
+# ✅ You should see: capstone_setup_complete
+
+# 5. Exit the terminal
+exit
+```
+
+---
+
+### ✅ Validate the Environment
+
+Open a **new terminal** to activate the Python virtual environment and run:
+
+```bash
+which python
+python --version
+```
+
+✔️ You should see a path to your virtualenv and a Python 3.9.x version.
+
+---
+
+## 🧾 Screenshot Instructions
+
+📸 You’ll need to **take screenshots** during the lab for quizzes or submissions.
+Ensure screenshots are saved as `.jpg` or `.png`.
+
+### 📷 Screenshot Shortcuts:
+
+**Mac:**
+
+* Full screen: `Shift + Command + 3`
+* Selection: `Shift + Command + 4`
+
+**Windows:**
+
+* Active window: `Alt + Print Screen` → paste into editor → save image
+
+---
+
+### 👨🏿‍💻 Exercise 1: Pick Up the First Story
+
+Your task is to start your first development story.
+
+### ✅ Steps:
+
+1. Go to your **Kanban board**
+2. Find the top story in the **Sprint Backlog**:
+   **📝 "Containerize your microservice using Docker"**
+3. Move it to **In Progress**
+4. Assign it to yourself
+5. Open and read the story content
+
+### 📜 Story Overview:
+
+```
+As a developer  
+I need to containerize my microservice using Docker  
+So that I can deploy it easily with all of its dependencies  
+
+Assumptions:
+- Create a Dockerfile for repeatable builds  
+- Use a Python:3.9-slim image as the base  
+- It must install all Python requirements  
+- It should not run as root  
+- It should use gunicorn as the WSGI entry point  
+
+Acceptance Criteria:
+Given the Docker image named accounts has been created  
+When I use docker run accounts  
+Then I should see the accounts service running in Docker
+```
+
+✅ You’re now ready to start implementing this story!
+
+---
+
+If you need help with GitHub issues, Docker setup, or Kubernetes deployment — just reach out! 🙌
 
 
 
