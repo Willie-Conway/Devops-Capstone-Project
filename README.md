@@ -1418,6 +1418,214 @@ git commit -am "Added security headers"
 🧠 *“Secure early, test always, and deploy with confidence.”*
 
 
+### 🌐 Exercise 7: Add CORS Policies
+
+Now that your microservice is secure with HTTP headers via Flask-Talisman, it's time to allow **Cross-Origin Resource Sharing (CORS)** using Flask-Cors — enabling your frontend or other services to interact with your API!
+
+---
+
+### ✅ Objectives
+
+- ✍️ Write a unit test to validate CORS headers
+- 📦 Add `Flask-Cors` to your project
+- 🔧 Enable CORS in your Flask app
+- 🧪 Run tests and verify success
+- 📸 Capture evidence for screenshots
+
+---
+
+### 🧪 Step 1: Write the Test Case
+
+Add the following to `tests/test_routes.py`:
+
+```python
+def test_cors_security(self):
+    """It should return a CORS header"""
+    response = self.client.get('/', environ_overrides=HTTPS_ENVIRON)
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
+    # Check for the CORS header
+    self.assertEqual(response.headers.get('Access-Control-Allow-Origin'), '*')
+````
+
+🧨 This test will **fail initially** because Flask hasn't been configured with CORS yet.
+
+---
+
+### 📦 Step 2: Add Flask-Cors
+
+Update `requirements.txt`:
+
+```txt
+Flask-Cors
+```
+
+Then install the new dependency:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### 🔧 Step 3: Enable CORS in Your App
+
+Edit `service/__init__.py`:
+
+1. Import the library:
+
+   ```python
+   from flask_cors import CORS
+   ```
+
+2. Enable CORS **after Talisman is initialized**:
+
+   ```python
+   CORS(app)
+   ```
+
+This will allow cross-origin requests from **any domain** (using `*` wildcard).
+
+---
+
+### ✅ Step 4: Run All Tests
+
+Run all tests again to verify:
+
+```bash
+nosetests
+```
+
+✅ Now **all tests should pass**, including your new `test_cors_security`.
+
+---
+
+### 💾 Step 5: Commit Your Changes
+
+```bash
+git commit -am "Added CORS headers"
+```
+
+---
+
+### 🧪 Exercise 8: Validate CORS Headers
+
+Let’s manually confirm that your service returns CORS headers!
+
+---
+
+### 🚀 Step 1: Start the Service
+
+In one terminal, run:
+
+```bash
+honcho start
+```
+
+---
+
+## 🔍 Step 2: Use curl to Check Headers
+
+In a second terminal:
+
+```bash
+curl -I localhost:5000
+```
+
+You should see output like this:
+
+```
+HTTP/1.1 302 FOUND
+Server: gunicorn
+Date: Thu, 13 Oct 2022 20:18:54 GMT
+Content-Type: text/html; charset=utf-8
+Location: https://localhost:5000/
+Access-Control-Allow-Origin: *
+Permissions-Policy: browsing-topics=()
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Content-Security-Policy: default-src 'self'; object-src 'none'
+Referrer-Policy: strict-origin-when-cross-origin
+```
+
+✅ Confirm the presence of the `Access-Control-Allow-Origin: *` header.
+
+---
+
+### 🛑 Step 3: Stop the Service
+
+In the first terminal, stop the service by pressing:
+
+```
+Ctrl+C
+```
+
+(You might need to press it twice.)
+
+---
+
+### 🚀 Exercise 8 Continued: Make a Pull Request
+
+You’ve now implemented and verified CORS headers — let’s commit, push, and make a PR.
+
+---
+
+### 🔄 Step 1: Confirm All Changes Are Committed
+
+```bash
+git status
+```
+
+If anything is uncommitted, do:
+
+```bash
+git add .
+git commit -m "Added CORS headers"
+```
+
+---
+
+### ☁️ Step 2: Push to Remote
+
+```bash
+git push -u origin <your-branch-name>
+```
+
+---
+
+### 🔁 Step 3: Open a Pull Request
+
+1. Go to your GitHub repo
+2. Click **Compare & pull request**
+3. Add a meaningful title and description
+4. Click **Create pull request**
+
+🎉 GitHub Actions will now run your tests automatically.
+
+---
+
+### 📸 Step 4: Take Screenshots for Submission
+
+* `security-code-done.jpg`: Screenshot of `service/__init__.py`
+* `security-headers-done.jpg`: Screenshot of terminal showing the curl output
+* `security-kanban-done.jpg`: Screenshot of your Kanban board with the story in **Done**
+
+---
+
+### 🏁 Conclusion
+
+Well done! 🎉 You've:
+
+* ✅ Enabled CORS policies using Flask-Cors
+* 🧪 Verified via tests and curl
+* 🚀 Opened a pull request with CI
+* 📸 Captured evidence for your submission
+
+You're ready to move on to **Sprint 3** where you’ll tackle Docker, Kubernetes, and Tekton CD pipelines.
+
+---
+
+
+
 
 
 
