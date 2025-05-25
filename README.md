@@ -910,14 +910,14 @@ Then secure headers and a CORS policy should be returned
 > “Planning is bringing the future into the present so that you can do something about it now.” – Alan Lakein
 
 
-#### Exercise 1: Pick Up the First Story
+### 🚀 Exercise 1: Pick Up the First Story
 
 ⏱ **Estimated Time:** 10 minutes  
 📋 **Objective:** Start working on your first story by properly updating the kanban board.
 
 ---
 
-## 📌 Your Task
+### 📌 Your Task
 
 Before you begin coding, follow these steps:
 
@@ -930,7 +930,7 @@ Before you begin coding, follow these steps:
 
 ---
 
-## 🧾 Story Details
+### 🧾 Story Details
 
 > **Title:** Need the ability to automate continuous integration checks  
 > 
@@ -958,7 +958,7 @@ And the badge should show that the build is passing
 
 ---
 
-## 🏁 Results
+### 🏁 Results
 
 ✅ The story should now:
 
@@ -968,7 +968,7 @@ And the badge should show that the build is passing
 
 ---
 
-## 📸 Don't Forget: Screenshot Reminder
+### 📸 Don't Forget: Screenshot Reminder
 
 🖼 Take a screenshot of your kanban board after assigning and moving the story. Save it as:
 
@@ -995,7 +995,7 @@ This project uses GitHub Actions to automate the following CI pipeline:
 
 ---
 
-## ⚙️ GitHub Actions Workflow Configuration
+### ⚙️ GitHub Actions Workflow Configuration
 
 The workflow file is located at:  
 `.github/workflows/ci-build.yaml`
@@ -1047,7 +1047,7 @@ jobs:
 
 ---
 
-## 🧪 Testing & Coverage
+### 🧪 Testing & Coverage
 
 * **Testing Tool:** `nose`
 * **Linter:** `flake8`
@@ -1055,14 +1055,14 @@ jobs:
 
 ---
 
-## 🏷️ Badge
+### 🏷️ Badge
 
 The badge above 👆 automatically updates with the latest build status of your default branch (`main`).
 It’s a great way to communicate your project’s CI health! ✅
 
 ---
 
-## 📸 Evidence (Screenshots to Submit)
+### 📸 Evidence (Screenshots to Submit)
 
 * `ci-workflow-done.jpg` – Workflow run from GitHub Actions
 * `ci-badge-done.jpg` – README showing the CI badge
