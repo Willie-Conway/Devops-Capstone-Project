@@ -1304,6 +1304,120 @@ This will help you compare the response **before and after** implementing Flask-
 💡 *"Start with clarity. Deliver with security."*
 
 
+Here’s a complete `README.md` in **Markdown format with emojis** that documents **Exercise 4: Add Security Headers** as part of your DevOps Capstone Lab workflow:
+
+
+### 🔐 Exercise 4: Add Security Headers
+
+In this exercise, you'll begin improving the security of your microservice by adding **Flask-Talisman**, which injects essential HTTP security headers into your REST API responses.
+
+---
+
+### 🧠 Objective
+
+Apply security best practices to your Flask application by:
+
+- ✅ Adding `Flask-Talisman` to your `requirements.txt`
+- ✅ Installing the dependency
+- ✅ Modifying your Flask app to include Talisman
+- ✅ Validating the expected security headers using automated tests
+
+---
+
+### 🛠️ Your Task
+
+### 📦 1. Add Flask-Talisman to `requirements.txt`
+At the bottom of the file, add:
+```txt
+Flask-Talisman
+````
+
+---
+
+### 📥 2. Install Requirements
+
+Use the following command in your terminal:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### 🧩 3. Update the Flask App
+
+Open the file:
+
+```
+./service/__init__.py
+```
+
+Then, do the following:
+
+#### 🔁 Import Talisman
+
+Add this import:
+
+```python
+from flask_talisman import Talisman
+```
+
+#### 🧬 Create Talisman Instance
+
+After your Flask app is created, add:
+
+```python
+talisman = Talisman(app)
+```
+
+This wraps your Flask app with Talisman, enabling automatic security headers 🚀
+
+---
+
+### 🧪 4. Run Unit Tests
+
+Test only your routes:
+
+```bash
+nosetests tests/test_routes.py
+```
+
+✅ Your **security headers test** should now **pass**
+❌ Other route tests may **fail** due to enforced HTTPS (we'll fix this in Exercise 5)
+
+---
+
+### 🧾 Results
+
+You should observe:
+
+* ✅ `test_security_headers` **passes**
+* ❌ Other tests may fail due to 302 redirects or missing HTTPS handling
+
+No worries — you're on the right path! 🎯
+We'll adjust Talisman to disable forced HTTPS during tests in the next exercise.
+
+---
+
+### 💬 Commit Your Work
+
+Once this step is complete, don't forget to save your progress:
+
+```bash
+git commit -am "Added security headers"
+```
+
+---
+
+### 🔜 Next Up
+
+➡️ [Exercise 5: Disable Forced HTTPS](#) — Fix your broken tests so they pass during local testing.
+
+---
+
+🧠 *“Secure early, test always, and deploy with confidence.”*
+
+
 
 
 
