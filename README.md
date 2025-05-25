@@ -766,6 +766,37 @@ def test_method_not_allowed(self):
 * Docker (optional) 🐳
 
 
+# 🌀 Sprint Retrospective: Capstone Project Sprint 1
+
+## ✅ What Went Right
+- 🚀 Successfully implemented **CRUD operations** for the Account microservice.
+- 🧪 All **tests passed**, ensuring high code quality and functionality.
+- 🤝 Smooth **collaboration with the product owner** during the sprint review.
+- 📚 Clear and detailed **documentation** guided development and testing effectively.
+
+---
+
+## ⚠️ What Went Wrong
+- 🤔 Initial confusion around handling **HTTP status codes** correctly.
+- 🐞 Spent more time than expected debugging **update and delete endpoints**.
+- 🧭 Could have **planned testing earlier** to catch bugs before implementation.
+
+---
+
+## 🔄 What to Improve Next Sprint
+- 🧪 Write **more comprehensive tests before coding** new features.
+- 🧠 Allocate time upfront for **API design discussions** and clarity.
+- ⚙️ **Automate deployment and integration** steps for faster feedback.
+- ⏱️ Schedule **regular check-ins** to detect and resolve issues early.
+
+---
+
+## 📝 Final Thoughts
+Reflecting on your sprint helps you improve as a developer and teammate. Keep these lessons in mind for Sprint 2! 💡
+
+> “Agile is not a destination—it’s a journey of continuous improvement.” 🚶‍♂️
+
+
 
 
 
