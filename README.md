@@ -764,7 +764,7 @@ def test_method_not_allowed(self):
 * curl 🌐
 * SQLAlchemy 🛢️
 * Docker (optional) 🐳
-
+---
 
 # 🌀 Sprint Retrospective: Capstone Project Sprint 1
 
@@ -794,7 +794,193 @@ def test_method_not_allowed(self):
 ## 📝 Final Thoughts
 Reflecting on your sprint helps you improve as a developer and teammate. Keep these lessons in mind for Sprint 2! 💡
 
+
 > “Agile is not a destination—it’s a journey of continuous improvement.” 🚶‍♂️
+
+
+# Lab: 🚀 Sprint 2 Planning — Capstone Project
+
+🕒 **Estimated Time Needed:** 30 minutes
+
+Welcome to **Sprint 2 Planning**! With Sprint 1 successfully wrapped up 🎉, it’s time to level up our microservice by adding **continuous integration** and **security enhancements**.
+
+---
+
+## 🎯 Objectives
+
+In this sprint, you will:
+
+- 📝 Create stories for Sprint 2  
+- 🗂️ Add them to your **Kanban board**  
+- 🏷️ Apply appropriate **labels** and **estimates**  
+- 📋 Build and prioritize your **Sprint Backlog**
+
+---
+
+## 📸 Screenshot Requirements
+
+📷 Throughout this lab, you'll need to take screenshots (`.jpg` or `.png`) to document your progress. Use built-in OS tools:
+
+- **Mac**: `⇧ + ⌘ + 3` or `⇧ + ⌘ + 4`
+- **Windows**: `Alt + Print Screen`, then paste into Paint or Snipping Tool
+
+---
+
+## 📦 New Requirements from Management
+
+Management has requested:
+
+- 🤖 **Automated CI** using GitHub Actions  
+- 🛡️ **Security upgrades** including security headers and CORS policy  
+
+---
+
+## 🧩 User Stories for Sprint 2
+
+### ✅ Story 1: Automate Continuous Integration Checks
+
+**Title:** Need the ability to automate continuous integration checks  
+**As a** Developer  
+**I need** automation to build and test every pull request  
+**So that** I don't rely on manual testing
+
+#### 🧠 Assumptions
+- Use **GitHub Actions** for automation
+- Include **linting** and **unit testing**
+- Use **`postgres:alpine`** as the DB image
+- Add a **build status badge** to the `README.md`
+
+#### ✅ Acceptance Criteria (Gherkin)
+```gherkin
+Given code is ready to be merged  
+When a pull request is created  
+Then GitHub Actions should run linting and unit tests  
+And the badge should show that the build is passing
+````
+
+* 📌 **Label:** `technical debt`
+* 📏 **Estimate:** `Small (3)`
+* 🚦 **Status:** Move to **Sprint Backlog** (ranked 1st)
+
+---
+
+### 🔐 Story 2: Add Security Headers and CORS Policies
+
+**Title:** Need to add security headers and CORS policies
+**As a** service provider
+**I need** security headers and CORS in place
+**So that** my site is protected from attacks
+
+#### 🧠 Assumptions
+
+* Use `Flask-Talisman` for **security headers**
+* Use `Flask-CORS` for **CORS policies**
+
+#### ✅ Acceptance Criteria (Gherkin)
+
+```gherkin
+Given the site is secured  
+When a REST API request is made  
+Then secure headers and a CORS policy should be returned
+```
+
+* 📌 **Label:** `security`
+* 📏 **Estimate:** `Medium (5)`
+* 🚦 **Status:** Move to **Sprint Backlog** (ranked 2nd)
+
+---
+
+## 🗂️ Finalizing the Sprint Backlog
+
+* ✅ Add both stories to **Sprint 2**
+* 🔢 Rank story 1 (CI automation) **first**
+* 🔢 Rank story 2 (Security) **second**
+* 🖼️ Take a screenshot of your Kanban board as `sprint2-plan.jpg` or `sprint2-plan.png`
+
+---
+
+## 🏁 Conclusion
+
+🎉 **Congratulations!** You've completed your Sprint 2 planning. Your team is now ready to:
+
+* 🚀 Start building automation
+* 🔐 Secure your microservice
+* ✅ Improve development workflow
+
+> “Planning is bringing the future into the present so that you can do something about it now.” – Alan Lakein
+
+
+# 🚀 Exercise 1: Pick Up the First Story
+
+⏱ **Estimated Time:** 10 minutes  
+📋 **Objective:** Start working on your first story by properly updating the kanban board.
+
+---
+
+## 📌 Your Task
+
+Before you begin coding, follow these steps:
+
+1. 🧭 Navigate to your **kanban board**.
+2. 🔍 Find the **first story** at the top of the **Sprint Backlog**:
+   > **"Need the ability to automate continuous integration checks"**
+3. 👉 Move the story to the **In Progress** column.
+4. 🙋 Assign the story to **yourself**.
+5. 📖 Open and **read the full contents** of the story.
+
+---
+
+## 🧾 Story Details
+
+> **Title:** Need the ability to automate continuous integration checks  
+> 
+> **As a** Developer  
+> **I need** automation to build and test every pull request  
+> **So that** I do not have to rely on manual testing of each request, which is time-consuming
+
+### 🔍 Assumptions
+
+- ⚙️ GitHub Actions will be used for the automation workflow  
+- 🧪 Workflow must include **code linting** and **testing**  
+- 🐘 The Docker image used for the database should be `postgres:alpine`  
+- 🏷 A GitHub Actions **badge** should be added to the `README.md` to reflect the build status
+
+---
+
+### ✅ Acceptance Criteria (Gherkin)
+
+```gherkin
+Given code is ready to be merged  
+When a pull request is created  
+Then GitHub Actions should run linting and unit tests  
+And the badge should show that the build is passing
+````
+
+---
+
+## 🏁 Results
+
+✅ The story should now:
+
+* Be visible in the **In Progress** column
+* Be assigned to **you**
+* Be **fully reviewed** so you're ready to begin development
+
+---
+
+## 📸 Don't Forget: Screenshot Reminder
+
+🖼 Take a screenshot of your kanban board after assigning and moving the story. Save it as:
+
+```
+sprint2-story-inprogress.jpg
+```
+
+---
+
+👍 You're now ready to move on to the next exercise and start building your CI workflow!
+
+
 
 
 
