@@ -910,7 +910,7 @@ Then secure headers and a CORS policy should be returned
 > “Planning is bringing the future into the present so that you can do something about it now.” – Alan Lakein
 
 
-# 🚀 Exercise 1: Pick Up the First Story
+#### Exercise 1: Pick Up the First Story
 
 ⏱ **Estimated Time:** 10 minutes  
 📋 **Objective:** Start working on your first story by properly updating the kanban board.
